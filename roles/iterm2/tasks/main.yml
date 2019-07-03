@@ -1,0 +1,10 @@
+
+# iTerm2-Color-Schemes
+- name: Clone iTerm2-Color-Schemes
+  git:
+    repo: "https://github.com/mbadolato/iTerm2-Color-Schemes.git"
+    dest: "{{ user_home }}/iterm2-color-schemes"
+    accept_hostkey: yes
+    update: yes
+  tags: configuration
+  

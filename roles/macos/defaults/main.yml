@@ -1,0 +1,38 @@
+mac_homebrew_packages:
+  - coreutils
+  - findutils
+  - htop
+  - ack
+  - git
+  - curl
+  - wget
+  - zsh
+  - z
+  - gnupg
+  - tree
+  - awscli
+
+# Mac Apps to be installed with homebrew-cask
+mac_cask_packages:
+  # Editor
+  - sublime-text
+  - meld
+  # IDE
+  - intellij-idea
+  - pycharm-ce
+  # Utilities
+  - iterm2
+  - alfred
+  - postman
+  - vlc
+  # Browsers
+  - google-chrome
+  # Docker
+  - docker
+  - docker-completion
+  - docker-compose-completion
+  # Chat
+  - slack
+  - whatsapp
+  # Media/Music
+  - spotify

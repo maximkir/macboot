@@ -1,0 +1,61 @@
+# Installation and setup
+- import_tasks: mac.yml
+  when: ansible_os_family == "Darwin"
+
+# Configuration
+- name: Check if zshrc already exists
+  stat: path="{{user_home}}/.zshrc"
+  register: zshrc_stat
+
+- name: Back up zshrc if it exists
+  command: mv ~/.zshrc ~/.zshrc.bak
+  args:
+    creates: "{{user_home}}/.zshrc.bak"
+  when: zshrc_stat.stat.exists
+
+- name: Check if Oh My Zsh already installed
+  stat: path="{{oh_my_zsh_home}}"
+  register: oh_my_zsh
+
+# Oh My Zsh Installation
+- import_tasks: oh_my_zsh.yml
+  when:
+  - install_oh_my_zsh == "yes"
+  - oh_my_zsh.stat.exists == "false"
+
+# Powerline fonts Installation
+- name: Clone Powerline fonts
+  git:
+    repo: 'https://github.com/powerline/fonts.git'
+    dest: "{{powerline_fonts_home}}"
+    accept_hostkey: yes
+    update: yes
+
+- name: Install Powerline fonts
+  command: "{{powerline_fonts_home}}/install.sh"
+
+# Oh My Zsh plugins
+- name: Clone oh-my-zsh custom plugins
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ oh_my_zsh_home }}/custom/plugins/{{ item.name }}"
+    accept_hostkey: yes
+    update: yes
+  with_items: "{{ oh_my_zsh_custom_plugins }}"
+  tags: configuration
+# Oh My Zsh themes
+- name: Clone oh-my-zsh custom themes
+  git:
+    repo: "{{ item.repo }}"
+    dest: "{{ oh_my_zsh_home }}/custom/themes/{{ item.name }}"
+    accept_hostkey: yes
+    update: yes
+  with_items: "{{ oh_my_zsh_custom_themes }}"
+  tags: configuration
+
+- name: Create zsh config file
+  template:
+    src: zsh.config.j2
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    mode: 0640
+  tags: configuration
