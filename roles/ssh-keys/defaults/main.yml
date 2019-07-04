@@ -1,0 +1,13 @@
+
+ssh_home: "{{user_home}}/.ssh"
+
+ssh_keys:
+  - name: id_rsa
+    type: rsa
+    size: 4096
+    github_host: github.com
+  - name: id_rsa_work
+    type: rsa
+    size: 4096
+    github_host: work.github.com
+    

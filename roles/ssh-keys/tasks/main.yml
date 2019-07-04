@@ -1,0 +1,13 @@
+- name: Generate ssh keys
+  openssh_keypair:
+    path: "{{ ssh_home }}/{{ item.name }}"
+    type: "{{ item.type }}"
+    size: "{{ item.size }}"
+  with_items: "{{ ssh_keys }}"
+
+- name: Create ssh config file
+  template:
+    src: ssh.config.j2
+    dest: "{{ ssh_home }}/config"
+    mode: 0640
+  tags: configuration

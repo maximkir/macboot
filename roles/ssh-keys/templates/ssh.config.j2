@@ -1,0 +1,11 @@
+# Managed by ssh-keys ansible role
+# Updated on {{ template_run_date }}
+
+{% for ssh_key in ssh_keys %}
+Host {{ ssh_key.github_host }}
+	HostName github.com
+	PreferredAuthentications publickey
+  	AddKeysToAgent yes
+  	IdentityFile {{ ssh_home }}/{{ ssh_key.name }}
+  	
+{% endfor %}
