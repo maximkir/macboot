@@ -53,9 +53,13 @@
   with_items: "{{ oh_my_zsh_custom_themes }}"
   tags: configuration
 
+- set_fact:
+    zsh_config_content: "{{ lookup('template', 'templates/zsh.config.j2') }}"
+
 - name: Create zsh config file
-  template:
-    src: zsh.config.j2
+  blockinfile:
     dest: "{{ ansible_env.HOME }}/.zshrc"
+    content: "{{ zsh_config_content }}"
+    marker: "## {mark} added by ansible (zsh configuration)"
     mode: 0640
   tags: configuration
