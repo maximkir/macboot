@@ -27,3 +27,5 @@ oh_my_zsh_plugins:
   - zsh-completions
   - zsh-syntax-highlighting
   - zsh-autosuggestions
+  - gradle
+  - z
