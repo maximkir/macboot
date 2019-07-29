@@ -5,9 +5,12 @@
     size: "{{ item.size }}"
   with_items: "{{ ssh_keys }}"
 
+- set_fact:
+    ssh_config_content: "{{ lookup('template', 'templates/ssh.config.j2') }}"
+
 - name: Create ssh config file
-  template:
-    src: ssh.config.j2
+  blockinfile:
     dest: "{{ ssh_home }}/config"
+    content: "{{ ssh_config_content }}"
     mode: 0640
   tags: configuration

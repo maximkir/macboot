@@ -1,5 +1,5 @@
 
-ssh_home: "{{user_home}}/.ssh"
+ssh_home: "~/.ssh"
 
 ssh_keys:
   - name: id_rsa
