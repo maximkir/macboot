@@ -36,6 +36,7 @@ create_venv
 
 source ./activate.sh
 
+# Install packages to the newly created virtual environment
 pip_install_dependencies
 
 deactivate
