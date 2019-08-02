@@ -5,14 +5,14 @@
 * pyenv
 
 ## Usage
-venv is used to create a new virtual environment via the terminal command: 
+venv is used to create a new virtual environment via the terminal command:  
 `./prepare_venv.sh`
 
-activate with: 
+activate with:  
 `./activate.sh`
 
-and deactivate with simply: 
+and deactivate with simply:  
 `deactivate`
 
-For tool installation execute: 
+For tool installation execute:  
 `ansible-playbook -i hosts local_env.yml --tags <TAGS>`
