@@ -1,7 +1,7 @@
 # Ansible Playbooks For My Development Machines
 
 ## Requirements
-* Python3
+* Python3 (3.3+)
 * pyenv
 
 ## Usage
