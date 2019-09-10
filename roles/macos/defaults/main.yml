@@ -23,6 +23,7 @@ mac_cask_packages:
   - java
   # Development Tools
   - visualvm
+  - dbeaver-community
   # Utilities
   - iterm2
   - alfred
