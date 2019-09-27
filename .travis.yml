@@ -1,9 +1,17 @@
 ---
 sudo: required
 
-os: osx
+os:
+  - osx
 
-script:
+osx_image:
+  # OS X 10.14
+  - xcode11
+
+install:
   - ./prepare_venv.sh
   - source activate.sh
-  - ansible-playbook -i hosts local_env.yml --tags zsh
+
+script:
+  - ansible-playbook -i hosts --syntax-check local_env.yml
+  - ansible-playbook -i hosts local_env.yml --tags zsh --ask-become
