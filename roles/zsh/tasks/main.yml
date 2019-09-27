@@ -21,7 +21,7 @@
 - import_tasks: oh_my_zsh.yml
   when:
   - install_oh_my_zsh == "yes"
-  - oh_my_zsh.stat.exists == "false"
+  - oh_my_zsh.stat.exists == False
 
 # Powerline fonts Installation
 - name: Clone Powerline fonts
