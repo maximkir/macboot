@@ -17,6 +17,8 @@
   command: chsh -s /usr/local/bin/zsh
   # Only run this if above task was changed
   when: zsh_shells.changed
+  become: true
+  become_method: sudo
 
 # Fix broken /etc/zshenv, which runs path_helper
 # We rename it to prevent unwanted reordering of $PATH

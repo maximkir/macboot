@@ -21,4 +21,4 @@ install:
 
 script:
   - ansible-playbook -i inventory --syntax-check local_env.yml
-  - sudo ansible-playbook -i inventory local_env.yml --tags zsh
+  - ansible-playbook -i inventory local_env.yml --tags zsh
