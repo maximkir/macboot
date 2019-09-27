@@ -19,6 +19,11 @@ mac_cask_packages:
   # IDE
   - intellij-idea
   - pycharm-ce
+  # JDK
+  - java
+  # Development Tools
+  - visualvm
+  - dbeaver-community
   # Utilities
   - iterm2
   - alfred
