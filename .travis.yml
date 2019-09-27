@@ -1,0 +1,9 @@
+---
+sudo: required
+
+os: osx
+
+script:
+  - ./prepare_venv.sh
+  - source activate.sh
+  - ansible-playbook -i hosts local_env.yml --tags zsh
