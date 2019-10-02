@@ -1,4 +1,3 @@
-install_oh_my_zsh: yes
 
 oh_my_zsh_home: "{{user_home}}/.oh-my-zsh"
 powerline_fonts_home: "{{user_home}}/.powerline-fonts"

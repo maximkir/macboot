@@ -1,0 +1,24 @@
+---
+sudo: required
+
+os:
+  - osx
+
+osx_image:
+  # OS X 10.14
+  - xcode11
+
+cache:
+  - directories:
+    # Python
+    - $HOME/.pyenv
+    # Python virtual environment
+    - .venv
+
+install:
+  - ./prepare_venv.sh
+  - source activate.sh
+
+script:
+  - ansible-playbook -i inventory --syntax-check local_env.yml
+  - ansible-playbook -vvv -i inventory local_env.yml --tags zsh

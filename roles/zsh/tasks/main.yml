@@ -17,11 +17,17 @@
   stat: path="{{oh_my_zsh_home}}"
   register: oh_my_zsh
 
+- debug:
+    msg: "Oh My Zsh already installed"
+  when: oh_my_zsh.stat.exists
+
+- debug:
+    msg: "Oh My Zsh not installed"
+  when: not oh_my_zsh.stat.exists
+
 # Oh My Zsh Installation
 - import_tasks: oh_my_zsh.yml
-  when:
-  - install_oh_my_zsh == "yes"
-  - oh_my_zsh.stat.exists == "false"
+  when: not oh_my_zsh.stat.exists
 
 # Powerline fonts Installation
 - name: Clone Powerline fonts
