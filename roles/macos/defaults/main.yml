@@ -1,3 +1,5 @@
+install_homebrew_if_missing: true
+
 mac_homebrew_packages:
   - coreutils
   - findutils
@@ -34,7 +36,6 @@ mac_cask_packages:
   # Docker
   - docker
   - docker-completion
-  - docker-compose-completion
   # Chat
   - slack
   - whatsapp
