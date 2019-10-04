@@ -5,46 +5,11 @@
   become: true
   become_method: sudo
 
-- name: Ensuring Homebrew Is Installed
-  stat:
-    path: "/usr/local/bin/brew"
-  register: "homebrew_check"
+- import_tasks: osx.yml
+  when: ansible_os_family == "Darwin"
+  changed_when: false
+  become: true
+  become_method: sudo
 
-- name: Fail If Homebrew Is Not Installed and install_homebrew_if_missing Is False
-  fail:
-    msg: "Homebrew is missing...Install from http://brew.sh/"
-  when: >
-        not homebrew_check.stat.exists and
-        not install_homebrew_if_missing
-
-- name: Installing Homebrew
-  command: '/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-  when: >
-        not homebrew_check.stat.exists and
-        install_homebrew_if_missing
-
-- name: Updating Homebrew
-  homebrew:
-    update_homebrew: true
-  when: homebrew_check.stat.exists
-
-- name: Install mac-specific homebrew packages
-  homebrew:
-    name: '{{mac_homebrew_packages}}'
-    state: present
-
-- name: Tap into homebrew/cask-fonts
-  homebrew_tap:
-    tap: homebrew/cask-fonts
-    state: present
-
-- name: Tap into homebrew/cask-versions
-  homebrew_tap:
-    tap: homebrew/cask-versions
-    state: present
-
-- name: Install apps with homebrew cask
-  homebrew_cask:
-    name: '{{item}}'
-    state: latest
-  with_items: '{{mac_cask_packages}}'
+- import_tasks: brew.yml
+  when: ansible_os_family == "Darwin"

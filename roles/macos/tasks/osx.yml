@@ -1,0 +1,60 @@
+---
+
+- name: Save to disk (not to iCloud) by default
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSDocumentSaveNewDocumentsToCloud
+    type: bool
+    value: false
+    state: present
+
+- name: Automatically quit printer app once the print jobs complete
+  osx_defaults:
+    domain: com.apple.print.PrintingPrefs
+    key: "Quit When Finished"
+    type: bool
+    value: true
+    state: present
+
+- name: Disable the “Are you sure you want to open this application?” dialog
+  osx_defaults:
+    domain: com.apple.LaunchServices
+    key: LSQuarantine
+    type: bool
+    value: false
+    state: present
+
+- name: Disable local Time Machine snapshots
+  command: "tmutil disablelocal"
+
+- name: Disable hibernation (speeds up entering sleep mode)
+  command: "pmset -a hibernatemode 0"
+
+- name: Remove the sleep image file to save disk space
+  command: "rm /Private/var/vm/sleepimage"
+
+- name: Create a zero-byte file instead previously deleted sleep image
+  command: "touch /Private/var/vm/sleepimage"
+
+- name: Make sure that a sleep image can’t be rewritten
+  command: "chflags uchg /Private/var/vm/sleepimage"
+
+- name: Disable the sudden motion sensor as it’s not useful for SSDs
+  command: "pmset -a sms 0"
+
+- name: Disable “natural” (Lion-style) scrolling
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+    state: present
+
+
+- name: Set AppleMeasurementUnits to Centimeters
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleMeasurementUnits
+    type: string
+    value: Centimeters
+    state: present
