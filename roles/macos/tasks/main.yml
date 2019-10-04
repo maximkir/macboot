@@ -1,6 +1,8 @@
 - name: Set system defaults
   script: .osx
   changed_when: false
+  become: true
+  become_method: sudo
 
 - name: Install mac-specific homebrew packages
   homebrew: name={{mac_homebrew_packages}} state=present
