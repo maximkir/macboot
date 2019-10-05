@@ -47,8 +47,8 @@
   osx_defaults:
     domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
     key: Clicking
-    type: bool
-    value: true
+    type: int
+    value: 0
     state: present
 
 - name: "Mouse [TapBehavior, currentHost]: enable tap to click for this user and for the login screen"
@@ -119,9 +119,35 @@
     value: Centimeters
     state: present
 
-- name: 
+- name: Set AppleLanguages to English & Hebrew
   osx_defaults:
+    domain: NSGlobalDomain
     key: AppleLanguages
     type: array
     value:
       - en-US
+      - he-US
+
+- name: Set AppleLocale to en_US@currency=USD
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleLocale
+    type: string
+    value: "en_US@currency=USD"
+
+- name: Set AppleMetricUnits=true
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleMetricUnits
+    type: bool
+    value: true
+
+- name: Set the timezone
+  command: "systemsetup -settimezone "Asia/Jerusalem" > /dev/null"
+
+- name: Disable auto-correct
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: bool
+    value: false

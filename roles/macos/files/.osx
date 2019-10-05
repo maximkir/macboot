@@ -66,13 +66,13 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # defaults write NSGlobalDomain AppleLanguages -array "en-US" "he-US"
 # defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
 # defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
-defaults write NSGlobalDomain AppleMetricUnits -bool true
+# defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 # Set the timezone; see `systemsetup -listtimezones` for other values
-systemsetup -settimezone "Asia/Jerusalem" > /dev/null
+# systemsetup -settimezone "Asia/Jerusalem" > /dev/null
 
 # Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+# defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 
 ###############################################################################
