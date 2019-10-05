@@ -1,4 +1,5 @@
 install_homebrew_if_missing: true
+sleep_image_file_path: /private/var/vm/sleepimage 
 
 mac_homebrew_packages:
   - coreutils

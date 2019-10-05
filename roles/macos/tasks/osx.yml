@@ -29,19 +29,78 @@
 
 - name: Remove the sleep image file to save disk space
   file: 
-    path: "/private/var/vm/sleepimage"
+    path: "{{sleep_image_file_path}}"
     state: absent
 
-- name: Create a zero-byte file instead previously deleted sleep image
-  file: 
-    path: "/private/var/vm/sleepimage"
-    state: touch
+# - name: Create a zero-byte file instead previously deleted sleep image
+#   file: 
+#     path: "{{sleep_image_file_path}}"
+#     state: touch
 
-- name: Make sure that a sleep image can’t be rewritten
-  command: "chflags uchg /Private/var/vm/sleepimage"
+# - name: Make sure that a sleep image can’t be rewritten
+#   command: "chflags uchg {{sleep_image_file_path}}"
 
 - name: Disable the sudden motion sensor as it’s not useful for SSDs
   command: "pmset -a sms 0"
+
+- name: "Trackpad [Bluetooth]: enable tap to click for this user and for the login screen"
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: bool
+    value: true
+    state: present
+
+- name: "Mouse [TapBehavior, currentHost]: enable tap to click for this user and for the login screen"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    host: currentHost
+    type: int
+    value: 1
+    state: present
+
+- name: "Mouse [TapBehavior]: enable tap to click for this user and for the login screen"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    type: int
+    value: 1
+    state: present
+
+- name: "Trackpad [CornerSecondaryClick]: map bottom right corner to right-click"
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+    state: present
+
+- name: "Trackpad [RightClick]: map bottom right corner to right-click"
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadRightClick
+    type: bool
+    value: true
+    state: present
+
+- name: "Trackpad [CornerClickBehavior]: map bottom right corner to right-click"
+  osx_defaults:
+    host: currentHost
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.trackpadCornerClickBehavior
+    type: int
+    value: 1
+    state: present
+
+- name: "Trackpad [EnableSecondaryClick]: map bottom right corner to right-click"
+  osx_defaults:
+    host: currentHost
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.enableSecondaryClick
+    type: bool
+    value: true
+    state: present
 
 - name: Disable “natural” (Lion-style) scrolling
   osx_defaults:
@@ -59,3 +118,10 @@
     type: string
     value: Centimeters
     state: present
+
+- name: 
+  osx_defaults:
+    key: AppleLanguages
+    type: array
+    value:
+      - en-US
