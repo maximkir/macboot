@@ -29,15 +29,13 @@
 
 - name: Remove the sleep image file to save disk space
   file: 
-    path: "/Private/var/vm/sleepimage"
+    path: "/private/var/vm/sleepimage"
     state: absent
 
 - name: Create a zero-byte file instead previously deleted sleep image
   file: 
-    path: "/Private/var/vm/sleepimage"
+    path: "/private/var/vm/sleepimage"
     state: touch
-  become: true
-  become_method: sudo
 
 - name: Make sure that a sleep image can’t be rewritten
   command: "chflags uchg /Private/var/vm/sleepimage"
