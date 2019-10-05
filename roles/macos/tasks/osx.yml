@@ -36,7 +36,8 @@
   file: 
     path: "/Private/var/vm/sleepimage"
     state: touch
-
+  become: true
+  become_method: sudo
 
 - name: Make sure that a sleep image can’t be rewritten
   command: "chflags uchg /Private/var/vm/sleepimage"
