@@ -24,9 +24,6 @@
     value: false
     state: present
 
-- name: Disable local Time Machine snapshots
-  command: "tmutil disablelocal"
-
 - name: Disable hibernation (speeds up entering sleep mode)
   command: "pmset -a hibernatemode 0"
 
