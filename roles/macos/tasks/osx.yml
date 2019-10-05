@@ -159,9 +159,65 @@
     type: string
     value: "{{user_home}}/Desktop"
 
-- name: Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+- name: "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
   osx_defaults:
     domain: com.apple.screencapture
     key: type
     type: string
     value: png
+
+- name: "[Finder] Allow quitting via ⌘ + Q; doing so will also hide desktop icons"
+  osx_defaults:
+    domain: com.apple.finder
+    key: QuitMenuItem
+    type: bool
+    value: true
+
+- name: "[Finder] Disable window animations and Get Info animations"
+  osx_defaults:
+    domain: com.apple.finder
+    key: DisableAllAnimations
+    type: bool
+    value: true
+
+- name: "[Finder] Set Desktop as the default location for new Finder windows"
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    type: string
+    value: "file://{{user_home}}}/Desktop/"
+
+- name: "[Finder] For other paths, use `PfLo` and `file:///full/path/here/`"
+  osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    type: string
+    value: "PfDe"
+
+- name: "[Finder] Show icons for external hard drives on the desktop"
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: bool
+    value: true
+
+- name: "[Finder] Show icons for hard drives on the desktop"
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    type: bool
+    value: true
+
+- name: "[Finder] Show icons for mounted servers on the desktop"
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowMountedServersOnDesktop
+    type: bool
+    value: true
+
+- name: "[Finder] Show icons for removable media on the desktop"
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowRemovableMediaOnDesktop
+    type: bool
+    value: true
