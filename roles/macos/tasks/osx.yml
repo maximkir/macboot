@@ -28,10 +28,15 @@
   command: "pmset -a hibernatemode 0"
 
 - name: Remove the sleep image file to save disk space
-  command: "rm /Private/var/vm/sleepimage"
+  file: 
+    path: "/Private/var/vm/sleepimage"
+    state: absent
 
 - name: Create a zero-byte file instead previously deleted sleep image
-  command: "touch /Private/var/vm/sleepimage"
+  file: 
+    path: "/Private/var/vm/sleepimage"
+    state: touch
+
 
 - name: Make sure that a sleep image can’t be rewritten
   command: "chflags uchg /Private/var/vm/sleepimage"
