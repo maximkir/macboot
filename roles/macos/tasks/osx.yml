@@ -143,7 +143,7 @@
     value: true
 
 - name: Set the timezone
-  command: "systemsetup -settimezone "Asia/Jerusalem" > /dev/null"
+  command: "systemsetup -settimezone \"Asia/Jerusalem\" > /dev/null"
 
 - name: Disable auto-correct
   osx_defaults:
