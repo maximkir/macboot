@@ -15,10 +15,21 @@ cache:
     # Python virtual environment
     - .venv
 
+# before_install:
+#   # Uninstall existing Homebrew installation.
+#   - curl -sLO https://raw.githubusercontent.com/Homebrew/install/master/uninstall
+#   - chmod +x ./uninstall
+#   - ./uninstall --force
+#   - sudo rm -rf /usr/local/Homebrew
+#   - sudo rm -rf /usr/local/Caskroom
+#   - sudo rm -rf /usr/local/bin/brew
+
 install:
   - ./prepare_venv.sh
   - source activate.sh
 
 script:
   - ansible-playbook -i inventory --syntax-check local_env.yml
-  - ansible-playbook -vvv -i inventory local_env.yml --tags zsh
+  - ansible-playbook -i inventory local_env.yml --tags macos
+  - ansible-playbook -i inventory local_env.yml --tags zsh
+  - ansible-playbook -i inventory local_env.yml --tags iterm2

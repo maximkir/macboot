@@ -1,3 +1,6 @@
+install_homebrew_if_missing: true
+sleep_image_file_path: /private/var/vm/sleepimage 
+
 mac_homebrew_packages:
   - coreutils
   - findutils
@@ -33,8 +36,6 @@ mac_cask_packages:
   - google-chrome
   # Docker
   - docker
-  - docker-completion
-  - docker-compose-completion
   # Chat
   - slack
   - whatsapp

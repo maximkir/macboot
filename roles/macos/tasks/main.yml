@@ -1,16 +1,8 @@
+
 - name: Set system defaults
-  script: .osx
+  import_tasks: osx.yml
+  when: ansible_os_family == "Darwin"
   changed_when: false
 
-- name: Install mac-specific homebrew packages
-  homebrew: name={{mac_homebrew_packages}} state=present
-
-- name: Tap into homebrew/cask-fonts
-  homebrew_tap: tap=homebrew/cask-fonts state=present
-
-- name: Tap into homebrew/cask-versions
-  homebrew_tap: tap=homebrew/cask-versions state=present
-
-- name: Install Mac apps with homebrew cask
-  homebrew_cask: name={{item}} state=present
-  with_items: '{{mac_cask_packages}}'
+- import_tasks: brew.yml
+  when: ansible_os_family == "Darwin"
