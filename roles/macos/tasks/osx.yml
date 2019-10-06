@@ -26,11 +26,15 @@
 
 - name: Disable hibernation (speeds up entering sleep mode)
   command: "pmset -a hibernatemode 0"
+  become: true
+  become_method: sudo
 
 - name: Remove the sleep image file to save disk space
   file: 
     path: "{{sleep_image_file_path}}"
     state: absent
+  become: true
+  become_method: sudo
 
 # - name: Create a zero-byte file instead previously deleted sleep image
 #   file: 
@@ -42,7 +46,9 @@
 
 - name: Disable the sudden motion sensor as it’s not useful for SSDs
   command: "pmset -a sms 0"
-
+  become: true
+  become_method: sudo
+  
 - name: "Trackpad [Bluetooth]: enable tap to click for this user and for the login screen"
   osx_defaults:
     domain: com.apple.driver.AppleBluetoothMultitouch.trackpad

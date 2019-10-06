@@ -3,8 +3,6 @@
   import_tasks: osx.yml
   when: ansible_os_family == "Darwin"
   changed_when: false
-  become: true
-  become_method: sudo
 
 - import_tasks: brew.yml
   when: ansible_os_family == "Darwin"
