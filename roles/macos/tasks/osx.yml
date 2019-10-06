@@ -369,7 +369,7 @@
     type: bool
     value: true
 
-- name: [Finder] Show the ~/Library folder
+- name: "[Finder] Show the ~/Library folder"
   command: "chflags nohidden ~/Library"
 
 - name: "[Dock] Enable highlight hover effect for the grid view of a stack"
