@@ -43,3 +43,4 @@
     name: '{{item}}'
     state: latest
   with_items: '{{mac_cask_packages}}'
+  # ignore_errors: result.msg.startswith('Error: It seems there is already an App at')
