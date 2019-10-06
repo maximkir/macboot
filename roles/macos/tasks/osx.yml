@@ -478,7 +478,7 @@
     value: true
 
 - name: "[Dock] Reset Launchpad"
-  command: "find ~/Library/Application Support/Dock -name \"*.db\" -maxdepth 1 -delete"
+  command: "find \"~/Library/Application Support/Dock\" -name \"*.db\" -maxdepth 1 -delete"
 
 # Hot corners
 # Possible values:
