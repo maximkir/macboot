@@ -3,12 +3,22 @@
 - name: Make sure zsh is installed
   homebrew: name=zsh state=present
 
+- name: "Ensure /etc/shells contains '/usr/local/bin/zsh'"
+  lineinfile:
+    name: /etc/shells
+    line: "/usr/local/bin/zsh"
+    state: present
+  check_mode: yes
+  register: zsh_in_etc_shell
+  failed_when: (zsh_in_etc_shell is changed) or (zsh_in_etc_shell is failed)
+
 # http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/
 - name: Add zsh to /etc/shells
   lineinfile:
     line: /usr/local/bin/zsh
     dest: /etc/shells
     state: present
+  when: zsh_in_etc_shell is changed
   register: zsh_shells
   become: true
   become_method: sudo
