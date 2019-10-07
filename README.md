@@ -50,7 +50,6 @@ The 'zsh' tag will:
 The 'macos' tag will set some defaults in macos operating system.
 In addtion it will install applications.
 
-
 ### Included Applications / Configuration (Default)
 
 Applications (installed with Homebrew Cask):
