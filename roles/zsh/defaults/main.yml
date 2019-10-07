@@ -6,7 +6,7 @@ zsh_user:
   - "{{ ansible_ssh_user|default(lookup('env', 'USER'))  }}"
 
 zsh_debug_startup_time: false
-oh_my_zsh_theme: agnoster
+oh_my_zsh_theme: "powerlevel10k/powerlevel10k"
 zsh_append_zshrc: ""
 
 oh_my_zsh_custom_plugins:
@@ -20,6 +20,8 @@ oh_my_zsh_custom_plugins:
 oh_my_zsh_custom_themes:
   - name: powerlevel9k
     repo: "https://github.com/bhilburn/powerlevel9k.git"
+  - name: powerlevel10k
+    repo: "https://github.com/romkatv/powerlevel10k.git"
 
 oh_my_zsh_plugins:
   - git
