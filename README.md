@@ -26,6 +26,27 @@ You can filter which part of the provisioning process to run by specifying a set
 
     `ansible-playbook local_env.yml -i inventory -K --tags "dotfiles,macos"`
 
+## Dotfimes
+
+The 'dotfiles' tag will install my [dotfiles](https://github.com/maximkir/dotfiles) into the current user's home directory. 
+
+
+## iTerm2
+
+The 'iterm2' tag will install extensions for the [iTerm2](https://www.iterm2.com/) terminal:
+* [A set of color schemes for iTerm2](https://github.com/mbadolato/iTerm2-Color-Schemes)
+* 
+
+## ZSH
+
+The 'zsh' tag will do:
+* Install zsh
+* Install [oh-my-zsh](https://ohmyz.sh/), plugins and themes
+* Install [Powerline](https://github.com/powerline/fonts) fonts
+* Configure [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme.
+
+
+
 ## Included Applications / Configuration (Default)
 
 Applications (installed with Homebrew Cask):
@@ -60,3 +81,6 @@ Packages (installed with Homebrew):
   - gnupg
   - tree
   - awscli
+
+## Manual Steps
+
