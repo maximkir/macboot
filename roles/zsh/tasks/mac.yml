@@ -10,7 +10,7 @@
     state: present
   check_mode: yes
   register: zsh_in_etc_shell
-  failed_when: (zsh_in_etc_shell is changed) or (zsh_in_etc_shell is failed)
+  # failed_when: (zsh_in_etc_shell is changed) or (zsh_in_etc_shell is failed)
 
 # http://zanshin.net/2013/09/03/how-to-use-homebrew-zsh-instead-of-max-os-x-default/
 - name: Add zsh to /etc/shells
