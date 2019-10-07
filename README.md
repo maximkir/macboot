@@ -39,7 +39,7 @@ The 'iterm2' tag will install extensions for the [iTerm2](https://www.iterm2.com
 
 ## ZSH
 
-The 'zsh' tag will do:
+The 'zsh' tag will:
 * Install zsh
 * Install [oh-my-zsh](https://ohmyz.sh/), plugins and themes
 * Install [Powerline](https://github.com/powerline/fonts) fonts
@@ -48,9 +48,10 @@ The 'zsh' tag will do:
 ## MacOS
 
 The 'macos' tag will set some defaults in macos operating system.
+In addtion it will install applications.
 
 
-## Included Applications / Configuration (Default)
+### Included Applications / Configuration (Default)
 
 Applications (installed with Homebrew Cask):
 
