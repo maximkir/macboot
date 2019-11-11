@@ -23,6 +23,7 @@ mac_cask_packages:
   - intellij-idea
   - pycharm-ce
   # JDK
+  - adoptopenjdk8
   - java
   # Development Tools
   - visualvm
