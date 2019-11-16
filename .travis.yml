@@ -34,4 +34,4 @@ script:
   - ansible-playbook -i inventory local_env.yml --tags zsh
   - ansible-playbook -i inventory local_env.yml --tags iterm2
   - ansible-playbook -i inventory local_env.yml --tags dotfiles
-  - bash; git s
+  - git s
