@@ -23,7 +23,7 @@ function create_venv()
 function brew_install_or_update()
 {
 	formula=$1
-	if brew ls --versions ${formula} 2&> /dev/null; then
+	if brew ls --versions ${formula} > /dev/null 2>&1; then
 		echo "Upgrading ${formula}"
  		brew upgrade ${formula}
 	else
