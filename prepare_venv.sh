@@ -25,9 +25,9 @@ function brew_install_or_update()
 	formula=$1
 	if brew ls --versions ${formula} > /dev/null 2>&1; then
 		echo "Upgrading ${formula}"
- 		brew upgrade ${formula}
+ 		brew upgrade ${formula} > /dev/null 2>&1
 	else
-		echo "Upgrading ${formula}"
+		echo "Installing ${formula}"
 		brew install ${formula}
 	fi
 }
