@@ -20,7 +20,22 @@ function create_venv()
 	python3 -m venv --prompt "${PROMPT}" "${VENV_DIR}"
 }
 
+function brew_install_or_update()
+{
+	formula=$1
+	if brew ls --versions ${formula} 2&> /dev/null; then
+		echo "Upgrading ${formula}"
+ 		brew upgrade ${formula}
+	else
+		echo "Upgrading ${formula}"
+		brew install ${formula}
+	fi
+}
+
 echo "Installing python: $PYTHON_VERSION"
+
+brew_install_or_update pyenv
+
 pyenv install --skip-existing "$PYTHON_VERSION"
 
 # Allows pyenv to automatically change versions
