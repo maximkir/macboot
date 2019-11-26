@@ -2,6 +2,7 @@
   hosts: local
   roles:
     # Tag each role so that we can select individual roles to run with ansible-playbook --tags
+    - {role: software, tags: ['macos', 'bootstrap'], when: ansible_os_family == "Darwin"}
     - {role: macos, tags: ['macos', 'bootstrap'], when: ansible_os_family == "Darwin"}
     - {role: zsh, tags: ['zsh', 'bootstrap']}
     - {role: iterm2, tags: ['iterm2'], when: ansible_os_family == "Darwin"}

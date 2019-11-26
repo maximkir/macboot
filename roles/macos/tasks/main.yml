@@ -3,6 +3,3 @@
   import_tasks: osx.yml
   when: ansible_os_family == "Darwin"
   changed_when: false
-
-- import_tasks: brew.yml
-  when: ansible_os_family == "Darwin"
