@@ -48,7 +48,10 @@ The 'zsh' tag will:
 ## MacOS
 
 The 'macos' tag will set some defaults in macos operating system.
-In addtion it will install applications.
+
+## Software
+
+The 'software' tag will install applications as follows:
 
 ### Included Applications / Configuration (Default)
 
