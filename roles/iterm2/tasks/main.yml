@@ -1,10 +1,45 @@
+---
+- name: Verify ~/Library/Application Support/iTerm2/DynamicProfiles dir
+  file:
+    path: '~/Library/Application Support/iTerm2/DynamicProfiles'
+    state: directory
+- name: Copy dynamic iterm2 profile
+  copy:
+    src: regular.plist
+    dest: '~/Library/Application Support/iTerm2/DynamicProfiles'
+    backup: yes
 
-# iTerm2-Color-Schemes
-- name: Clone iTerm2-Color-Schemes
-  git:
-    repo: "https://github.com/mbadolato/iTerm2-Color-Schemes.git"
-    dest: "{{ user_home }}/iterm2-color-schemes"
-    accept_hostkey: yes
-    update: yes
-  tags: configuration
+- name: Configure iterm2 defaults
+  osx_defaults: domain="com.googlecode.iterm2" key="{{ item.key }}" type="{{ item.type }}" value="{{ item.value }}" state=present
+  with_items:
+    - key: 'Default Bookmark Guid'
+      type: string
+      value: Regular
+    - key: 'PasteTabToStringTabStopSize'
+      type: integer
+      value: 4
+    - key: 'PromptOnQuit'
+      type: boolean
+      value: false
+    - key: 'QuitWhenAllWindowsClosed'
+      type: boolean
+      value: false
+    - key: 'SUEnableAutomaticChecks'
+      type: boolean
+      value: true
+    - key: 'ShowFullScreenTabBar'
+      type: boolean
+      value: true
+    - key: 'UseBorder'
+      type: boolean
+      value: true
+    - key: 'HideTab'
+      type: boolean
+      value: false
+    - key: 'OpenArrangementAtStartup'
+      type: boolean
+      value: false
+    - key: 'OpenNoWindowsAtStartup'
+      type: boolean
+      value: false
   

@@ -557,13 +557,6 @@
     type: bool
     value: true
 
-- name: "[iTerm2] Don’t display the annoying prompt when quitting iTerm"
-  osx_defaults:
-    domain: com.googlecode.iterm2
-    key: PromptOnQuit
-    type: bool
-    value: false
-
 - name: "[ActivityMonitor] Show the main window when launching Activity Monitor"
   osx_defaults:
     domain: com.apple.ActivityMonitor
