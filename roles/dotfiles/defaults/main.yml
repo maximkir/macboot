@@ -1,5 +1,5 @@
 dotfiles_repo: "https://github.com/maximkir/dotfiles.git"
-dotfiles_repo_version: 99397f0e345ae93b418a4a8f0e7439ff3d8b0db5
+dotfiles_repo_version: 80951cedc933672d937768809a833626fcbc8ba2
 dotfiles_repo_accept_hostkey: false
 dotfiles_repo_local_destination: "{{user_home}}/.dotfiles"
 
