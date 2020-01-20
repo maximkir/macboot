@@ -1,0 +1,11 @@
+---
+
+- name: Install sublime-text user settings
+  copy:
+    src:  "{{ item }}"
+    dest: "{{ subl_user_package }}"
+    backup: yes
+  with_fileglob:
+    - '*.sublime-settings'
+    - '*.sublime-package'
+    - '*.sublime-theme'

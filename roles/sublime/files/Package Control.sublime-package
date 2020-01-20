@@ -1,0 +1,14 @@
+{
+    "bootstrapped": true,
+    "installed_packages":
+    [
+        "Anaconda",
+        "BracketHighlighter",
+        "Dockerfile Syntax Highlighting",
+        "Material Theme",
+        "Package Control",
+        "Predawn",
+        "Pretty JSON",
+        "SideBarEnhancements"
+    ]
+}
