@@ -8,4 +8,4 @@
     - {role: iterm2, tags: ['iterm2'], when: ansible_os_family == "Darwin"}
     - {role: dotfiles, tags: ['dotfiles']}
     - {role: ssh-keys, tags: ['ssh-keys', 'bootstrap']}
-    
+    - {role: sublime, tags: ['sublime']}
