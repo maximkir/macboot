@@ -1,14 +1,20 @@
 {
-    "bootstrapped": true,
-    "installed_packages":
-    [
-        "Anaconda",
-        "BracketHighlighter",
-        "Dockerfile Syntax Highlighting",
-        "Material Theme",
-        "Package Control",
-        "Predawn",
-        "Pretty JSON",
-        "SideBarEnhancements"
-    ]
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"BracketHighlighter",
+		"Dockerfile Syntax Highlighting",
+		"Material Theme",
+		"Package Control",
+		"Predawn",
+		"Pretty JSON",
+		"Python 3",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-pylint"
+	]
 }
