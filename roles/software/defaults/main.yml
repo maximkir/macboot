@@ -12,6 +12,7 @@ mac_homebrew_packages:
   - gnupg
   - tree
   - awscli
+  - pyenv
 
 # Mac Apps to be installed with homebrew-cask
 mac_cask_packages:
