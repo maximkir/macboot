@@ -17,6 +17,7 @@ cache:
 
 
 install:
+  - make prerequisites
   - make setup
   - source .venv/bin/activate
 
