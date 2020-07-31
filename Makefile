@@ -4,10 +4,10 @@
 OS = $(shell uname)
 
 define brew_install_or_upgrade
-	if brew ls --versions "$(1)" >/dev/null; then
-	    HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "$(1)"
-	else
-	    HOMEBREW_NO_AUTO_UPDATE=1 brew install "$(1)"
+	if brew ls --versions "$(1)" >/dev/null; then \
+	    HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "$(1)"; \
+	else \
+	    HOMEBREW_NO_AUTO_UPDATE=1 brew install "$(1)"; \
 	fi
 endef
 
@@ -23,7 +23,7 @@ PYTHON=${VENV_DIR}/bin/python3
 prerequisites: $(OS)
 
 Darwin:
-	brew update
+# 	brew update
 	$(call brew_install_or_upgrade,pyenv)
 
 
@@ -38,7 +38,7 @@ pyenv:
 
 	@eval "$$(pyenv init -)"; \
 	pyenv local ${PYTHON_VERSION}; \
-	python -m venv --prompt ${PROMPT} ${VENV_DIR}
+	python3 -m venv --prompt ${PROMPT} ${VENV_DIR}
 
 
 	$(VENV_ACTIVATE); \
