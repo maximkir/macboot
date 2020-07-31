@@ -1,5 +1,5 @@
 
-.ONESHELL:
+
 
 OS = $(shell uname)
 
@@ -23,9 +23,8 @@ PYTHON=${VENV_DIR}/bin/python3
 prerequisites: $(OS)
 
 Darwin:
-# 	brew update
+	brew update
 	$(call brew_install_or_upgrade,pyenv)
-
 
 
 .DEFAULT: help
@@ -37,15 +36,16 @@ pyenv:
 	@echo "creating virtual env"
 	pyenv install --skip-existing ${PYTHON_VERSION}
 
-	@eval $$(pyenv init -)
-	pyenv local ${PYTHON_VERSION}
+	@eval "$$(pyenv init -)"; \
+	pyenv local ${PYTHON_VERSION}; \
 	python -m venv --prompt ${PROMPT} ${VENV_DIR}
 
-	$(VENV_ACTIVATE)
+
+	$(VENV_ACTIVATE); \
 	pip install --upgrade pip
 
 dependencies:
-	$(VENV_ACTIVATE)
+	$(VENV_ACTIVATE); \
 	pip install -Ur requirements.txt
 
 

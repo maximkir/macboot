@@ -17,8 +17,7 @@ cache:
 
 
 install:
-  - make prerequisites
-  - make setup
+  - make prerequisites setup
   - source .venv/bin/activate
 
 script:
