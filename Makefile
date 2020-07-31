@@ -1,6 +1,4 @@
 
-
-
 OS = $(shell uname)
 
 define brew_install_or_upgrade
@@ -23,7 +21,7 @@ PYTHON=${VENV_DIR}/bin/python3
 prerequisites: $(OS)
 
 Darwin:
-# 	brew update
+	brew update
 	$(call brew_install_or_upgrade,pyenv)
 
 
