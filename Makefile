@@ -10,12 +10,12 @@ define brew_install_or_upgrade
 endef
 
 
-.PHONY: help init clean
+.PHONY: help dependencies pyenv setup clean
+
 PYTHON_VERSION=3.6.8
-PROMPT="ansible-playbooks"
+VENV_PROMT=$(basename "$PWD")
 VENV_DIR?=.venv
 VENV_ACTIVATE=. $(VENV_DIR)/bin/activate
-PYTHON=${VENV_DIR}/bin/python3
 
 
 prerequisites: $(OS)
@@ -28,15 +28,20 @@ Darwin:
 .DEFAULT: help
 
 help:
-	@echo "TBD"
+	@echo "Please choose one of the following targets: \n"\
+          "    prerequisites: Installs prerequisites software\n"\
+          "    pyenv: Sets up pyenv and a virtualenv for this project\n"\
+          "    dependencies: Installs dependencies for this project\n"\
+          "    setup: Setup your development environment and install dependencies\n"\
+          "    clean: Cleans any generated files"
 
 pyenv:
-	@echo "creating virtual env"
+	@echo "Creating virtual env, python version is: ${PYTHON_VERSION}"
 	pyenv install --skip-existing ${PYTHON_VERSION}
 
 	@eval "$$(pyenv init -)"; \
 	pyenv local ${PYTHON_VERSION}; \
-	python3 -m venv --prompt ${PROMPT} ${VENV_DIR}
+	python3 -m venv --prompt ${VENV_PROMT} ${VENV_DIR}
 
 
 	$(VENV_ACTIVATE); \
@@ -47,7 +52,8 @@ dependencies:
 	pip install -Ur requirements.txt
 
 
-setup: pyenv dependencies
+setup: prerequisites pyenv dependencies
 
 clean:
 	rm -rf ${VENV_DIR}
+	rm -f .python-version

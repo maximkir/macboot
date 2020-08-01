@@ -1,4 +1,4 @@
-# Ansible Playbooks For My Development Machines 
+# Ansible Playbooks For My Development Machines
 
 [![Build Status](https://travis-ci.org/maximkir/ansible-playbooks.svg?branch=master)](https://travis-ci.org/maximkir/ansible-playbooks)
 
@@ -17,7 +17,7 @@ This is a work in progress, and is mostly a means for me to document my current 
 
 1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
 2. Clone this repository to your local drive.
-3. Create new virtual environment via the terminal command: `./prepare_venv.sh`
+3. Create new virtual environment via the terminal command: `make prerequisites setup dependencies`
 4. Activate it with: `source activate.sh`
 
 ### Running a specific set of tagged tasks
@@ -28,7 +28,7 @@ You can filter which part of the provisioning process to run by specifying a set
 
 ## Dotfiles
 
-The 'dotfiles' tag will install my [dotfiles](https://github.com/maximkir/dotfiles) into the current user's home directory. 
+The 'dotfiles' tag will install my [dotfiles](https://github.com/maximkir/dotfiles) into the current user's home directory.
 
 
 ## iTerm2
