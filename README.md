@@ -17,7 +17,7 @@ This is a work in progress, and is mostly a means for me to document my current 
 
 1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
 2. Clone this repository to your local drive.
-3. Create new virtual environment via the terminal command: `make prerequisites setup dependencies`
+3. Create new virtual environment via the terminal command: `make setup`
 4. Activate it with: `source activate.sh`
 
 ### Running a specific set of tagged tasks

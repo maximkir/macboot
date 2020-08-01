@@ -12,8 +12,8 @@ endef
 
 .PHONY: help dependencies pyenv setup clean
 
-PYTHON_VERSION=3.6.8
-VENV_PROMT=$(basename "$PWD")
+PYTHON_VERSION?=3.6.8
+VENV_PROMT=$(basename "${PWD}")
 VENV_DIR?=.venv
 VENV_ACTIVATE=. $(VENV_DIR)/bin/activate
 
@@ -42,7 +42,6 @@ pyenv:
 	@eval "$$(pyenv init -)"; \
 	pyenv local ${PYTHON_VERSION}; \
 	python3 -m venv --prompt ${VENV_PROMT} ${VENV_DIR}
-
 
 	$(VENV_ACTIVATE); \
 	pip install --upgrade pip
