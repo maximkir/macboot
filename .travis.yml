@@ -21,9 +21,5 @@ install:
   - source .venv/bin/activate
 
 script:
-  - ansible-playbook -i inventory --syntax-check local_env.yml
-  - ansible-playbook -i inventory local_env.yml --tags macos
-  - ansible-playbook -i inventory local_env.yml --tags zsh
-  - ansible-playbook -i inventory local_env.yml --tags iterm2
-  - ansible-playbook -i inventory local_env.yml --tags dotfiles
+  - make test run_all
   - git s

@@ -53,6 +53,18 @@ dependencies:
 
 setup: prerequisites pyenv dependencies
 
+test:
+	$(VENV_ACTIVATE); \
+	ansible-playbook -vvv -i inventory --syntax-check local_env.yml
+
+
+run_all:
+	$(VENV_ACTIVATE); \
+	ansible-playbook -i inventory local_env.yml --tags macos; \
+	ansible-playbook -i inventory local_env.yml --tags zsh; \
+	ansible-playbook -i inventory local_env.yml --tags iterm2; \
+	ansible-playbook -i inventory local_env.yml --tags dotfiles
+
 clean:
 	rm -rf ${VENV_DIR}
 	rm -f .python-version
