@@ -1,0 +1,25 @@
+name: ci-workflow
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup virtual environment
+      run: |
+        make setup
+    - name: check syntax
+      run: |
+        make test
+    - name: sanity
+      run: |
+        make run_all
+    - name: clean
+      run: |
+        make clean
