@@ -17,9 +17,9 @@ jobs:
     - name: check syntax
       run: |
         make test
-    - name: run all
+    - name: sanity
       run: |
         make run_all
-    - name: tun clean target
+    - name: clean
       run: |
         make clean
