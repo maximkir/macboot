@@ -1,6 +1,6 @@
 # Ansible Playbooks For My Development Machines
 
-[![Build Status](https://github.com/maximkir/ssher/workflows/CI/badge.svg?branch=master)](https://github.com/maximkir/ansible-playbooks/actions)
+[![Build Status](https://github.com/maximkir/ansible-playbooks/workflows/ci-workflow/badge.svg?branch=master)](https://github.com/maximkir/ansible-playbooks/actions)
 
 This playbook installs and configures most of the software I use on my Mac for software development. Some things in macOS are slightly difficult to automate, so I still have some manual installation steps, but at least it's all documented here.
 
