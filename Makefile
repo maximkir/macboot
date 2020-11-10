@@ -62,6 +62,7 @@ run_all:
 	$(VENV_ACTIVATE); \
 	ansible-playbook -i inventory local_env.yml --tags macos; \
 	ansible-playbook -i inventory local_env.yml --tags zsh; \
+	zsh --version; \
 	ansible-playbook -i inventory local_env.yml --tags iterm2; \
 	ansible-playbook -i inventory local_env.yml --tags dotfiles
 
