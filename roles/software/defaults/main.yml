@@ -2,6 +2,7 @@ install_homebrew_if_missing: true
 
 mac_homebrew_packages:
   - coreutils
+  - duf
   - findutils
   - htop
   - ack
