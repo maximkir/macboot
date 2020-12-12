@@ -77,6 +77,7 @@ Applications (installed with Homebrew Cask):
 Packages (installed with Homebrew):
 
   - coreutils
+  - duf
   - findutils
   - htop
   - ack
