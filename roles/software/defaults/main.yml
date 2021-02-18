@@ -13,7 +13,9 @@ mac_homebrew_packages:
   - gnupg
   - tree
   - awscli
+  - aws-iam-authenticator
   - pyenv
+  - kubectl
 
 # Mac Apps to be installed with homebrew-cask
 mac_cask_packages:
