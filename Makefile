@@ -1,14 +1,11 @@
 
 OS = $(shell uname)
 
-define brew_install_or_upgrade
-	if brew ls --versions "$(1)" >/dev/null; then \
-	    HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "$(1)"; \
-	else \
-	    HOMEBREW_NO_AUTO_UPDATE=1 brew install "$(1)"; \
-	fi
-endef
+SHASUM = sha256sum # Linux GNU
 
+ifeq ($(OS), Darwin)
+	SHASUM = shasum --algorithm 256
+endif
 
 .PHONY: test-syntax run-all
 
@@ -36,5 +33,5 @@ Makefile.venv:
 		-o Makefile.fetched \
 		-L "https://raw.githubusercontent.com/maximkir/python-venv-template/v2020.12.20/Makefile"
 	echo "1c79f371eda3c40441efaf59ecb830bd8c6b6f31ae0cac3f772626dcc498ac06 *Makefile.fetched" \
-		| sha256sum --check - \
+		| $(SHASUM) --check - \
 		&& mv Makefile.fetched Makefile.venv
