@@ -11,15 +11,18 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install coreutils
+      run: |
+        brew install coreutils
     - name: setup virtual environment
       run: |
         make setup
     - name: check syntax
       run: |
-        make test
+        make test-syntax
     - name: sanity
       run: |
-        make run_all
+        make run-all
     - name: clean
       run: |
         make clean

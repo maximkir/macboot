@@ -1,3 +1,5 @@
 .venv
 .python-version
 .idea
+# Downloaded by the Makefile
+Makefile.venv
