@@ -16,10 +16,10 @@ jobs:
         make setup
     - name: check syntax
       run: |
-        make test
+        make test-syntax
     - name: sanity
       run: |
-        make run_all
+        make run-all
     - name: clean
       run: |
         make clean
