@@ -25,6 +25,7 @@ oh_my_zsh_custom_themes:
 
 oh_my_zsh_plugins:
   - git
+  - kubectl
   - zsh-completions
   - zsh-syntax-highlighting
   - zsh-autosuggestions
