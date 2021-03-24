@@ -31,7 +31,7 @@ include Makefile.venv
 Makefile.venv:
 	curl \
 		-o Makefile.fetched \
-		-L "https://raw.githubusercontent.com/maximkir/python-venv-template/v2020.12.20/Makefile"
-	echo "1c79f371eda3c40441efaf59ecb830bd8c6b6f31ae0cac3f772626dcc498ac06 *Makefile.fetched" \
+		-L "https://raw.githubusercontent.com/maximkir/python-venv/v2021.03.24/Makefile.venv"
+	echo "9ea19929cbe15d7efa2c86e6870a762705850a67cef4d0ddb37c30ccd3c06149 *Makefile.fetched" \
 		| $(SHASUM) --check - \
 		&& mv Makefile.fetched Makefile.venv
