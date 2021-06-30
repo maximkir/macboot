@@ -35,7 +35,7 @@ unset file
 if command -v pyenv 1>/dev/null 2>&1; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path); $(pyenv init -)"
+    eval "$(pyenv init --path)"
 fi
 
 {% if zsh_debug_startup_time %}
