@@ -18,8 +18,6 @@ oh_my_zsh_custom_plugins:
     repo: "git://github.com/zsh-users/zsh-completions.git"
 
 oh_my_zsh_custom_themes:
-  - name: powerlevel9k
-    repo: "https://github.com/bhilburn/powerlevel9k.git"
   - name: powerlevel10k
     repo: "https://github.com/romkatv/powerlevel10k.git"
 
