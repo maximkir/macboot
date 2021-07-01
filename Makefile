@@ -13,12 +13,12 @@ PYTHON_VERSION?=3.9.0
 
 VENV_ACTIVATE=. $(VENV)/activate
 
-test-syntax:
+test-syntax: venv
 	$(VENV_ACTIVATE); \
 	ansible-playbook -vvv -i inventory --syntax-check local_env.yml
 
 
-run-all:
+run-all: venv
 	$(VENV_ACTIVATE); \
 	ansible-playbook -i inventory local_env.yml --tags macos; \
 	ansible-playbook -i inventory local_env.yml --tags zsh; \
