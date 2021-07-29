@@ -24,6 +24,7 @@ mac_cask_packages:
   - homebrew/cask-fonts/font-meslo-for-powerline
   # Editor
   - sublime-text
+  - visual-studio-code
   - meld
   # IDE
   - intellij-idea
