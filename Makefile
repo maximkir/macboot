@@ -10,6 +10,7 @@ endif
 .PHONY: test-syntax run-all
 
 PYTHON_VERSION?=3.9.0
+PIP_VERSION?=21.2.4
 
 VENV_ACTIVATE=. $(VENV)/activate
 
