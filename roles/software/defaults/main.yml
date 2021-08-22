@@ -25,27 +25,18 @@ mac_cask_packages:
   # Editor
   - sublime-text
   - visual-studio-code
-  - meld
   # IDE
-  - intellij-idea
+  - intellij-idea-ce
   - pycharm-ce
-  # JDK
-  - adoptopenjdk8
-  - java
   # Development Tools
   - visualvm
-  - dbeaver-community
   # Utilities
   - iterm2
   - alfred
   - postman
-  - vlc
   # Browsers
   - google-chrome
   # Docker
   - docker
-  # Chat
-  - slack
-  - whatsapp
   # Media/Music
   - spotify
