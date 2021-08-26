@@ -16,9 +16,9 @@ This is a work in progress, and is mostly a means for me to document my current 
 ## Installation
 
 1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
-2. Clone this repository to your local drive.
-3. Create new virtual environment via the terminal command: `make setup`
-4. Activate it with: `source activate.sh`
+2. Clone this repository to your machine.
+3. Execute `make zsh` or `make bash` to start a terminal with relevant depedencies.
+4. Alternatively, for the first time execute `make run-all` to install all roles.
 
 ### Running a specific set of tagged tasks
 
@@ -60,18 +60,13 @@ Applications (installed with Homebrew Cask):
   - [Docker](https://www.docker.com/)
   - [Google Chrome](https://www.google.com/chrome/)
   - [Homebrew](http://brew.sh/)
-  - [Slack](https://slack.com/)
   - [Sublime Text](https://www.sublimetext.com/)
-  - [Meld](http://meldmerge.org/)
   - [Intellij-idea](https://www.jetbrains.com/idea/)
   - [Pycharm-ce](https://www.jetbrains.com/pycharm/)
-  - Java
   - [Visualvm](https://visualvm.github.io/)
-  - [Dbeaver-community](https://dbeaver.io/)
   - [iterm2](https://www.iterm2.com/)
   - [Alfred](https://www.alfredapp.com/)
   - [Postman](https://www.getpostman.com/)
-  - [VLC](https://www.videolan.org/vlc/index.html)
   - [Spotify](https://www.spotify.com/)
 
 Packages (installed with Homebrew):
@@ -88,6 +83,8 @@ Packages (installed with Homebrew):
   - gnupg
   - tree
   - awscli
+  - pyenv
+  - kubectl
 
 ## Manual Steps
-
+TBD
