@@ -15,6 +15,7 @@ mac_homebrew_packages:
   - awscli
   - pyenv
   - kubectl
+  - lastpass-cli
 
 # Mac Apps to be installed with homebrew-cask
 mac_cask_packages:
