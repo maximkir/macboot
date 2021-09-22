@@ -22,7 +22,7 @@ This is a work in progress, and is mostly a means for me to document my current 
 
 ### Running a specific set of tagged tasks
 
-You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `iterm2`, `macos`, `ssh-keys` and `zsh`.
+You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `iterm2`, `macos`, `ssh-keys`, `software`, `sublime` and `zsh`.
 
     `ansible-playbook local_env.yml -i inventory -K --tags "dotfiles,macos"`
 
