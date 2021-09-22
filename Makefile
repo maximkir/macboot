@@ -25,6 +25,8 @@ run-all: venv
 	ansible-playbook -i inventory local_env.yml --tags zsh; \
 	zsh --version; \
 	ansible-playbook -i inventory local_env.yml --tags iterm2; \
+	ansible-playbook -i inventory local_env.yml --tags software; \
+	ansible-playbook -i inventory local_env.yml --tags sublime; \
 	ansible-playbook -i inventory local_env.yml --tags dotfiles
 
 
