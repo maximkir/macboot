@@ -88,9 +88,9 @@ Packages (installed with Homebrew):
 
 ## Manual Steps
 
-### Download Provate & Public Keys from a LastPass
+### Download Private & Public Keys from a LastPass
 
-I have a set of public and private keys pairs that I use for different purposes. To avoid their re-creation or copying, I store them in a vault (LastPass) and fetch them once needed by the following commands:
+I have a set of public and private keys pairs that I use for different purposes. To avoid their re-creation or copying, I store them in a vault ([LastPass](https://www.lastpass.com/)) and fetch them once needed by the following commands:
 
 Login:
 
