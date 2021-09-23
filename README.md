@@ -85,6 +85,39 @@ Packages (installed with Homebrew):
   - awscli
   - pyenv
   - kubectl
+  - lastpass-cli
 
 ## Manual Steps
-TBD
+
+### Download Private & Public Keys from LastPass
+
+I have a set of public and private keys pairs that I use for different purposes. To avoid their re-creation or copying, I store them in a vault ([LastPass](https://www.lastpass.com/)) and fetch them once needed by the following commands:
+
+Login:
+
+``` bash
+lpass login USERNAME
+```
+
+Upload Key Pair:
+
+``` bash
+entry_name="dummy_folder/dummy_note"
+pub_key_path=~/.ssh/dummy_id_rsa.pub
+pvt_key_path=~/.ssh/dummy_id_rsa
+
+printf "Private Key: %s\nPublic Key: %s\n" \
+  "$(cat ${pvt_key_path})" "$(cat ${pub_key_path})" \
+    | lpass add --non-interactive --sync=now --note-type=ssh-key ${entry_name}
+```
+
+Download Key Pair:
+
+``` bash
+entry_name="dummy_folder/dummy_note"
+pub_key_path=~/.ssh/dummy_id_rsa.pub
+pvt_key_path=~/.ssh/dummy_id_rsa
+
+lpass show ${entry_name} --field="Public Key" > ${pub_key_path}
+lpass show ${entry_name} --field="Private Key" > ${pvt_key_path}
+```
