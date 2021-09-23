@@ -85,6 +85,7 @@ Packages (installed with Homebrew):
   - awscli
   - pyenv
   - kubectl
+  - lastpass-cli
 
 ## Manual Steps
 
