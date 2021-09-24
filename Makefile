@@ -31,6 +31,7 @@ macos: venv
 zsh-setup: venv
 	$(VENV_ACTIVATE); \
 	ansible-playbook -i inventory local_env.yml ${ANSIBLE_ASK_BECOME_PASS_FLAG} --tags zsh
+	zsh --version
 
 dotfiles: venv
 	$(VENV_ACTIVATE); \
@@ -54,7 +55,7 @@ sublime: venv
 
 
 run-all: venv macos zsh-setup dotfiles ssh-keys software iterm sublime
-	zsh --version
+
 
 
 include Makefile.venv
