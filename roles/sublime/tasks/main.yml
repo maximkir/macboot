@@ -2,7 +2,7 @@
 
 - name: "Clone Sublime Packages"
   git:
-    repo: "git@github.com:sublimehq/Packages.git"
+    repo: "{{ sublime_external_packages_repo }}"
     dest: "{{ sublime_external_packages_home }}"
     version: "{{ sublime_external_packages_version }}"
     accept_hostkey: yes

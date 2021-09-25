@@ -5,6 +5,7 @@ subl_user_package: "{{ subl_package_home }}/User/"
 
 
 sublime_external_packages_home: "{{ user_home }}/.subl_packages"
+sublime_external_packages_repo: "https://github.com/sublimehq/Packages.git"
 sublime_external_packages_version: "f36b8f807d5f30d2b8ef639232a9fc5960f550fa"
 sublime_external_packages:
   - Groovy
