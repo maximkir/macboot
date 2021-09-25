@@ -57,6 +57,14 @@
     value: 0
     state: present
 
+- name: "Trackpad: Change Tracking speed"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 2.5
+    state: present
+
 - name: "Mouse [TapBehavior, currentHost]: enable tap to click for this user and for the login screen"
   osx_defaults:
     domain: NSGlobalDomain
