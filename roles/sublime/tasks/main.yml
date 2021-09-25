@@ -8,12 +8,16 @@
     accept_hostkey: yes
     update: yes
 
+- name: "Create Sublime package directory if it does not exist"
+  file:
+    path: "{{ subl_package_home }}"
+    state: directory
+
 - name: "Link external packages"
   file:
     src: "{{ sublime_external_packages_home }}/{{ item }}"
     dest: "{{ subl_package_home }}/{{ item }}"
     state: link
-  become: false
   with_items: "{{ sublime_external_packages }}"
 
 - name: "Install sublime-text user settings"
