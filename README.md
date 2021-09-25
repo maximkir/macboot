@@ -122,3 +122,18 @@ pvt_key_path=~/.ssh/dummy_id_rsa
 lpass show ${entry_name} --field="Public Key" > ${pub_key_path}
 lpass show ${entry_name} --field="Private Key" > ${pvt_key_path}
 ```
+
+### Mac App Store
+Not all software is available for installation through brew. The [mas](https://github.com/mas-cli/mas) utility is handy for installing purchased software from the Mac App Store.
+
+
+``` bash
+# Xcode
+mas install 497799835
+
+# Magnet
+mas install 441258766
+
+# Todoist
+mas install 585829637
+```
