@@ -2,18 +2,23 @@
 
 - name: "Clone Sublime Packages"
   git:
-    repo: "git@github.com:sublimehq/Packages.git"
+    repo: "{{ sublime_external_packages_repo }}"
     dest: "{{ sublime_external_packages_home }}"
     version: "{{ sublime_external_packages_version }}"
     accept_hostkey: yes
     update: yes
+
+- name: "Create Sublime package directory if it does not exist"
+  file:
+    path: "{{ subl_package_home }}"
+    state: directory
+    mode: '0700'
 
 - name: "Link external packages"
   file:
     src: "{{ sublime_external_packages_home }}/{{ item }}"
     dest: "{{ subl_package_home }}/{{ item }}"
     state: link
-  become: false
   with_items: "{{ sublime_external_packages }}"
 
 - name: "Install sublime-text user settings"

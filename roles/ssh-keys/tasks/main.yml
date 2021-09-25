@@ -10,6 +10,7 @@
 
 - name: Create ssh config file
   blockinfile:
+    create: yes
     dest: "{{ ssh_home }}/config"
     content: "{{ ssh_config_content }}"
     mode: 0640

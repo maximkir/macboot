@@ -7,7 +7,12 @@ ifeq ($(OS), Darwin)
 	SHASUM = shasum --algorithm 256
 endif
 
-.PHONY: test-syntax run-all
+ifeq ($(ANSIBLE_DONT_ASK_BECOME_PASS),)
+	ANSIBLE_ASK_BECOME_PASS_FLAG="--ask-become-pass"
+endif
+
+
+.PHONY: test-syntax macos zsh-setup dotfiles ssh-keys software iterm sublime run-all
 
 PYTHON_VERSION?=3.9.0
 PIP_VERSION?=21.2.4
@@ -19,15 +24,38 @@ test-syntax: venv
 	ansible-playbook -vvv -i inventory --syntax-check local_env.yml
 
 
-run-all: venv
+macos: venv
 	$(VENV_ACTIVATE); \
-	ansible-playbook -i inventory local_env.yml --tags macos; \
-	ansible-playbook -i inventory local_env.yml --tags zsh; \
-	zsh --version; \
-	ansible-playbook -i inventory local_env.yml --tags iterm2; \
-	ansible-playbook -i inventory local_env.yml --tags software; \
-	ansible-playbook -i inventory local_env.yml --tags sublime; \
+	ansible-playbook -i inventory local_env.yml ${ANSIBLE_ASK_BECOME_PASS_FLAG} --tags macos
+
+zsh-setup: venv
+	$(VENV_ACTIVATE); \
+	ansible-playbook -i inventory local_env.yml ${ANSIBLE_ASK_BECOME_PASS_FLAG} --tags zsh
+	zsh --version
+
+dotfiles: venv
+	$(VENV_ACTIVATE); \
 	ansible-playbook -i inventory local_env.yml --tags dotfiles
+
+ssh-keys: venv
+	$(VENV_ACTIVATE); \
+	ansible-playbook -i inventory local_env.yml --tags ssh-keys
+
+software: venv
+	$(VENV_ACTIVATE); \
+	ansible-playbook -i inventory local_env.yml --tags software
+
+iterm: venv
+	$(VENV_ACTIVATE); \
+	ansible-playbook -i inventory local_env.yml --tags iterm2
+
+sublime: venv
+	$(VENV_ACTIVATE); \
+	ansible-playbook -i inventory local_env.yml --tags sublime
+
+
+run-all: venv macos zsh-setup dotfiles ssh-keys software iterm sublime
+
 
 
 include Makefile.venv

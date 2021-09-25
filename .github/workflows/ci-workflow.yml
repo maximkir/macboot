@@ -29,6 +29,8 @@ jobs:
     - name: sanity
       run: |
         make run-all
+      env:
+        ANSIBLE_DONT_ASK_BECOME_PASS: true
     - name: clean
       run: |
         make clean
