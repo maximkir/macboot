@@ -86,6 +86,7 @@ Packages (installed with Homebrew):
   - pyenv
   - kubectl
   - lastpass-cli
+  - mas
 
 ## Manual Steps
 
