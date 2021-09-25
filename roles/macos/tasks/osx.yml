@@ -59,7 +59,7 @@
 
 - name: "Trackpad: Change Tracking speed"
   osx_defaults:
-    domain: .GlobalPreferences
+    domain: NSGlobalDomain
     key: com.apple.trackpad.scaling
     type: float
     value: 2.5
