@@ -12,6 +12,7 @@
   file:
     path: "{{ subl_package_home }}"
     state: directory
+    mode: '0700'
 
 - name: "Link external packages"
   file:

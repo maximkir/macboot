@@ -10,3 +10,4 @@ sublime_external_packages_version: "3de7248f8a27fc329f930dd5cb28e6f16b2c751e"
 sublime_external_packages:
   - Groovy
   - Makefile
+  - Markdown
