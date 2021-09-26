@@ -1,10 +1,14 @@
-# Ansible Playbooks For My Development Machines
+# MacBoot 💻 📦 🚀
 
 [![Build Status](https://github.com/maximkir/ansible-playbooks/workflows/ci-workflow/badge.svg?branch=master)](https://github.com/maximkir/ansible-playbooks/actions)
 
-This playbook installs and configures most of the software I use on my Mac for software development. Some things in macOS are slightly difficult to automate, so I still have some manual installation steps, but at least it's all documented here.
+This project helps me to bootstrap my development machines. During the last ten years of development, I've noticed a lot of time spent setting up a new appliance.
+As a software engineer, the DRY principle echoed in my head. Hence, I decided to automate it to save some time for myself (and my colleagues).
 
-This is a work in progress, and is mostly a means for me to document my current Mac's setup. I'll be evolving this set of playbooks over time.
+This is a work in progress and is primarily a means to document my current Mac's setup. I'll be evolving this set of tools over time.
+
+The project introduces no magic but a simple usage of the Ansible playbook that allows configuring various aspects of the machine.
+
 
 *See also*:
   - [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
@@ -88,7 +92,7 @@ Packages (installed with Homebrew):
   - lastpass-cli
   - mas
 
-## Manual Steps
+## Manual Steps 🛠️
 
 ### Download Private & Public Keys from LastPass
 
@@ -137,3 +141,9 @@ mas install 441258766
 # Todoist
 mas install 585829637
 ```
+
+
+## 📄 License
+
+macboot was created by [@maximkir](https://github.com/maximkir).
+Code is under the [Apache 2.0 license](LICENSE).
