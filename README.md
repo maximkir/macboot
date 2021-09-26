@@ -1,4 +1,4 @@
-# MacBoot 💻 📦 🚀
+# 💻 📦 🚀 MacBoot
 
 [![Build Status](https://github.com/maximkir/ansible-playbooks/workflows/ci-workflow/badge.svg?branch=master)](https://github.com/maximkir/ansible-playbooks/actions)
 
@@ -13,11 +13,11 @@ The project introduces no magic but a simple usage of the Ansible playbook that 
 *See also*:
   - [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
 
-## Requirements
+## ⚓ Requirements
 * Python3 (3.3+)
 * pyenv
 
-## Installation
+## ✨ Installation
 
 1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
 2. Clone this repository to your machine.
@@ -53,7 +53,7 @@ The 'zsh' tag will:
 
 The 'macos' tag will set some defaults in macos operating system.
 
-## Software
+## ⚙️ Software
 
 The 'software' tag will install applications as follows:
 
@@ -92,9 +92,9 @@ Packages (installed with Homebrew):
   - lastpass-cli
   - mas
 
-## Manual Steps 🛠️
+## 🛠️ 🐢 Manual Steps
 
-### Download Private & Public Keys from LastPass
+### 🔐 Download Private & Public Keys from LastPass
 
 I have a set of public and private keys pairs that I use for different purposes. To avoid their re-creation or copying, I store them in a vault ([LastPass](https://www.lastpass.com/)) and fetch them once needed by the following commands:
 
