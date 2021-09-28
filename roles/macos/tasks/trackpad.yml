@@ -66,3 +66,11 @@
     type: bool
     value: true
     state: present
+
+- name: Disable “natural” (Lion-style) scrolling
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+    state: present
