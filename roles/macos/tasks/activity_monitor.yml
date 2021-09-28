@@ -7,6 +7,13 @@
     type: bool
     value: true
 
+# Dock Icon Possible Options:
+# 0: Application Icon
+# 2: Network Usage
+# 3: Disk Activity
+# 5: CPU Usage
+# 6: CPU History
+
 - name: "[ActivityMonitor] Visualize CPU usage in the Activity Monitor Dock icon"
   osx_defaults:
     domain: com.apple.ActivityMonitor
