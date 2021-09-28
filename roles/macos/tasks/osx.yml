@@ -24,30 +24,8 @@
     value: false
     state: present
 
-- name: Disable hibernation (speeds up entering sleep mode)
-  command: "pmset -a hibernatemode 0"
-  become: true
-  become_method: sudo
-
-- name: Remove the sleep image file to save disk space
-  file: 
-    path: "{{sleep_image_file_path}}"
-    state: absent
-  become: true
-  become_method: sudo
-
-# - name: Create a zero-byte file instead previously deleted sleep image
-#   file: 
-#     path: "{{sleep_image_file_path}}"
-#     state: touch
-
-# - name: Make sure that a sleep image can’t be rewritten
-#   command: "chflags uchg {{sleep_image_file_path}}"
-
-- name: Disable the sudden motion sensor as it’s not useful for SSDs
-  command: "pmset -a sms 0"
-  become: true
-  become_method: sudo
+- name: Set SSD Settings
+  import_tasks: system/ssd.yml
   
 - name: Set Trackpad Settings
   import_tasks: trackpad.yml
@@ -111,19 +89,8 @@
 - name: Set Dock Settings
   import_tasks: dock.yml
 
-- name: "[Dashboard] Disable Dashboard"
-  osx_defaults:
-    domain: com.apple.dashboard
-    key: mcx-disabled
-    type: bool
-    value: true
-
-- name: "[Dashboard] Don’t show Dashboard as a Space"
-  osx_defaults:
-    domain: com.apple.dashboard
-    key: dashboard-in-overlay
-    type: bool
-    value: true
+- name: Set Dashboard Settings
+  import_tasks: dashboard.yml
 
 - name: Set Activity Monitor Settings
   import_tasks: activity_monitor.yml
