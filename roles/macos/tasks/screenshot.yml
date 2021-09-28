@@ -1,13 +1,13 @@
 ---
 
-- name: Save screenshots to the desktop
+- name: [Screenshots] Save screenshots to the desktop
   osx_defaults:
     domain: com.apple.screencapture
     key: location
     type: string
     value: "{{user_home}}/Desktop"
 
-- name: Include date in screenshots
+- name: [Screenshots] Include date in screenshots
   osx_defaults:
     domain: com.apple.screencapture
     key: include-date
@@ -15,7 +15,7 @@
     value: true
     state: present
 
-- name: "Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
+- name: "[Screenshots] Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)"
   osx_defaults:
     domain: com.apple.screencapture
     key: type
