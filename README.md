@@ -1,6 +1,6 @@
 # 💻 📦 🚀 MacBoot
 
-[![Build Status](https://github.com/maximkir/ansible-playbooks/workflows/ci-workflow/badge.svg?branch=master)](https://github.com/maximkir/ansible-playbooks/actions)
+[![Build Status](https://github.com/maximkir/macboot/workflows/ci-workflow/badge.svg?branch=master)](https://github.com/maximkir/macboot/actions)
 
 This project helps me to bootstrap my development machines. During the last ten years of development, I've noticed a lot of time spent setting up a new appliance.
 As a software engineer, the DRY principle echoed in my head. Hence, I decided to automate it to save some time for myself (and my colleagues).
