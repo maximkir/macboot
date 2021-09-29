@@ -24,7 +24,7 @@
     value: false
     state: present
   
-  - name: "[Misc] Set AppleMeasurementUnits to Centimeters"
+- name: "[Misc] Set AppleMeasurementUnits to Centimeters"
   osx_defaults:
     domain: NSGlobalDomain
     key: AppleMeasurementUnits
