@@ -1,6 +1,6 @@
 ---
 
-- name: [Locale] Set AppleLanguages to English & Hebrew
+- name: "[Locale] Set AppleLanguages to English & Hebrew"
   osx_defaults:
     domain: NSGlobalDomain
     key: AppleLanguages
@@ -9,12 +9,12 @@
       - en-US
       - he-US
 
-- name: [Locale] Set AppleLocale to en_US@currency=USD
+- name: "[Locale] Set AppleLocale to en_US@currency=USD"
   osx_defaults:
     domain: NSGlobalDomain
     key: AppleLocale
     type: string
     value: "en_US@currency=USD"
 
-- name: [Locale] Set timezone to Asia/Jerusalem
+- name: "[Locale] Set timezone to Asia/Jerusalem"
   command: "systemsetup -settimezone \"Asia/Jerusalem\" > /dev/null"
