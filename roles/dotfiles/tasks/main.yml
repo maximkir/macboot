@@ -4,6 +4,7 @@
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_repo_local_destination }}"
     version: "{{ dotfiles_repo_version }}"
+    force: yes
     accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
 
 - name: Ensure all configured dotfiles are links.
