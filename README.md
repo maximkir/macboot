@@ -127,6 +127,18 @@ lpass show ${entry_name} --field="Public Key" > ${pub_key_path}
 lpass show ${entry_name} --field="Private Key" > ${pvt_key_path}
 ```
 
+Add Keys to SSH Agent:
+
+Add the following snippet to `~/.zshrc.local` file:
+
+``` bash
+for file in ~/.ssh/{id_rsa,id_rsa_work}; do
+	[ -r "$file" ] && ssh-add "$file" > /dev/null 2>&1
+done
+
+unset file
+```
+
 ### Mac App Store
 Not all software is available for installation through brew. The [mas](https://github.com/mas-cli/mas) utility is handy for installing purchased software from the Mac App Store.
 
