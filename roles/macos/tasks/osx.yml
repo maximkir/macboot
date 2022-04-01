@@ -26,3 +26,6 @@
 
 - name: Set Activity Monitor Settings
   import_tasks: activity_monitor.yml
+
+- name: Set Keyboard Settings
+  import_tasks: keyboard.yml
