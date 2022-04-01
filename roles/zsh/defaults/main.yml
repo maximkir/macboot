@@ -11,11 +11,11 @@ zsh_append_zshrc: ""
 
 oh_my_zsh_custom_plugins:
   - name: zsh-syntax-highlighting
-    repo: "git://github.com/zsh-users/zsh-syntax-highlighting.git"
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
   - name: zsh-autosuggestions
-    repo: "git://github.com/zsh-users/zsh-autosuggestions.git"
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
   - name: zsh-completions
-    repo: "git://github.com/zsh-users/zsh-completions.git"
+    repo: "https://github.com/zsh-users/zsh-completions.git"
 
 oh_my_zsh_custom_themes:
   - name: powerlevel10k
