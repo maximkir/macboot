@@ -14,7 +14,7 @@ endif
 
 .PHONY: test-syntax macos zsh-setup dotfiles ssh-keys software iterm sublime run-all
 
-PYTHON_VERSION?=3.9.0
+PYTHON_VERSION?=3.9.12
 PIP_VERSION?=21.2.4
 
 VENV_ACTIVATE=. $(VENV)/activate
