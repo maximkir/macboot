@@ -1,5 +1,5 @@
 dotfiles_repo: "https://github.com/maximkir/dotfiles.git"
-dotfiles_repo_version: 1.1.0
+dotfiles_repo_version: 1.2.0
 dotfiles_repo_accept_hostkey: false
 dotfiles_repo_local_destination: "{{user_home}}/.dotfiles"
 
@@ -9,3 +9,4 @@ dotfiles_files:
   - .gitconfig
   - .vimrc
   - .inputrc
+  - .functions
