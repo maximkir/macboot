@@ -1,0 +1,19 @@
+---
+
+- name: Install global Pip packages.
+  ansible.builtin.pip:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    executable: "{{ item.executable | default('pip3') }}"
+  loop: "{{ pip_packages }}"
+
+- name: Install global Ruby gems.
+  become: true
+  community.general.gem:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+    version: "{{ item.version | default(omit) }}"
+    user_install: false
+    executable: "{{ item.executable | default(omit) }}"
+  loop: "{{ gem_packages }}"

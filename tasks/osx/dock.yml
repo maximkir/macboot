@@ -1,0 +1,167 @@
+---
+
+- name: "[Dock] Enable highlight hover effect for the grid view of a stack"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mouse-over-hilite-stack
+    type: bool
+    value: true
+
+- name: "[Dock] Set the icon size of Dock items to 36 pixels"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: float
+    value: 36
+
+- name: "[Dock] Change minimize/maximize window effect"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mineffect
+    type: string
+    value: "scale"
+
+- name: "[Dock] Minimize windows into their application’s icon"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: minimize-to-application
+    type: bool
+    value: true
+
+- name: "[Dock] Enable spring loading for all Dock items"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: enable-spring-load-actions-on-all-items
+    type: bool
+    value: true
+
+- name: "[Dock] Show indicator lights for open applications in the Dock"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: show-process-indicators
+    type: bool
+    value: true
+
+- name: "[Dock] Don’t animate opening applications from the Dock"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: launchanim
+    type: bool
+    value: false
+
+- name: "[Dock] Speed up Mission Control animations"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: expose-animation-duration
+    type: float
+    value: 0.1
+
+- name: "[Dock] Don’t group windows by application in Mission Control"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: expose-group-by-app
+    type: bool
+    value: false
+
+- name: "[Dock] Don’t automatically rearrange Spaces based on most recent use"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: mru-spaces
+    type: bool
+    value: false
+
+- name: "[Dock] Remove the auto-hiding Dock delay"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide-delay
+    type: float
+    value: 0
+
+- name: "[Dock] Remove the animation when hiding/showing the Dock"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide-time-modifier
+    type: float
+    value: 0
+
+- name: "[Dock] Automatically hide and show the Dock"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true
+
+- name: "[Dock] Make Dock icons of hidden applications translucent"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: showhidden
+    type: bool
+    value: true
+
+- name: "[Dock] Make Dock more transparent"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: hide-mirror
+    type: bool
+    value: true
+
+- name: "[Dock] Reset Launchpad"
+  ansible.builtin.command: "find \"~/Library/Application Support/Dock\" -name \"*.db\" -maxdepth 1 -delete"
+  register: cmd_output
+  changed_when: cmd_output.rc != 0
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+
+- name: "[Dock] Top left screen corner → Mission Control"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tl-corner
+    type: int
+    value: 2
+
+- name: "[Dock] Top left screen corner → Mission Control"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tl-modifier
+    type: int
+    value: 0
+
+
+- name: "[Dock] Top right screen corner → Desktop"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tr-corner
+    type: int
+    value: 4
+
+- name: "[Dock] Top right screen corner → Desktop"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-tr-modifier
+    type: int
+    value: 0
+
+- name: "[Dock] Bottom left screen corner → Start screen saver"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-bl-corner
+    type: int
+    value: 5
+
+- name: "[Dock] Bottom left screen corner → Start screen saver"
+  community.general.osx_defaults:
+    domain: com.apple.dock
+    key: wvous-bl-modifier
+    type: int
+    value: 0

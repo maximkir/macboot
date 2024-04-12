@@ -1,0 +1,202 @@
+---
+
+- name: "[Finder] Allow quitting via ⌘ + Q; doing so will also hide desktop icons"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: QuitMenuItem
+    type: bool
+    value: true
+
+- name: "[Finder] Disable window animations and Get Info animations"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: DisableAllAnimations
+    type: bool
+    value: true
+
+- name: "[Finder] Set Desktop as the default location for new Finder windows"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTargetPath
+    type: string
+    value: "file://{{ user_home }}}/Desktop/"
+
+- name: "[Finder] For other paths, use `PfLo` and `file:///full/path/here/`"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: NewWindowTarget
+    type: string
+    value: PfDe
+
+- name: "[Finder] Show icons for external hard drives on the desktop"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: bool
+    value: true
+
+- name: "[Finder] Show icons for hard drives on the desktop"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowHardDrivesOnDesktop
+    type: bool
+    value: true
+
+- name: "[Finder] Show icons for mounted servers on the desktop"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowMountedServersOnDesktop
+    type: bool
+    value: true
+
+- name: "[Finder] Show icons for removable media on the desktop"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowRemovableMediaOnDesktop
+    type: bool
+    value: true
+
+- name: "[Finder] Show hidden files by default"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: AppleShowAllFiles
+    type: bool
+    value: true
+
+- name: "[Finder] Show all filename extensions"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+
+- name: "[Finder] Show status bar"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowStatusBar
+    type: bool
+    value: true
+
+- name: "[Finder] Show path bar"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+
+- name: "[Finder] Allow text selection in Quick Look"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: QLEnableTextSelection
+    type: bool
+    value: true
+
+- name: "[Finder] Display full POSIX path as Finder window title"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: _FXShowPosixPathInTitle
+    type: bool
+    value: true
+
+- name: "[Finder] Disable the warning when changing a file extension"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    type: bool
+    value: false
+
+- name: "[Finder] Disable the warning before emptying the Trash"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: WarnOnEmptyTrash
+    type: bool
+    value: false
+
+- name: "[Finder] Use list view in all Finder windows by default"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: Nlsv
+
+- name: "[Finder] Empty Trash securely by default"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: EmptyTrashSecurely
+    type: bool
+    value: true
+
+- name: "[Finder] Enable spring loading for directories"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.springing.enabled
+    type: bool
+    value: true
+
+- name: "[Finder] Remove the spring loading delay for directories"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.springing.delay
+    type: float
+    value: 0
+
+- name: "[Finder] Avoid creating .DS_Store files on network volumes"
+  community.general.osx_defaults:
+    domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+
+- name: "[Finder] Disable disk image verification"
+  community.general.osx_defaults:
+    domain: com.apple.frameworks.diskimages
+    key: skip-verify
+    type: bool
+    value: true
+
+- name: "[Finder] Disable disk image verification - locked"
+  community.general.osx_defaults:
+    domain: com.apple.frameworks.diskimages
+    key: skip-verify-locked
+    type: bool
+    value: true
+
+- name: "[Finder] Disable disk image verification - remove"
+  community.general.osx_defaults:
+    domain: com.apple.frameworks.diskimages
+    key: skip-verify-remote
+    type: bool
+    value: true
+
+- name: "[Finder] Automatically open a new Finder window when a volume is mounted"
+  community.general.osx_defaults:
+    domain: com.apple.frameworks.diskimages
+    key: auto-open-ro-root
+    type: bool
+    value: true
+
+- name: "[Finder] Automatically open a new Finder window when a volume is mounted"
+  community.general.osx_defaults:
+    domain: com.apple.frameworks.diskimages
+    key: auto-open-rw-root
+    type: bool
+    value: true
+
+- name: "[Finder] Automatically open a new Finder window when a volume is mounted"
+  community.general.osx_defaults:
+    domain: com.apple.finder
+    key: OpenWindowForNewRemovableDisk
+    type: bool
+    value: true
+
+- name: "[Finder] Enable AirDrop over Ethernet and on unsupported Macs running Lion"
+  community.general.osx_defaults:
+    domain: com.apple.NetworkBrowser
+    key: BrowseAllInterfaces
+    type: bool
+    value: true
+
+- name: "[Finder] Show the ~/Library folder"
+  ansible.builtin.command: "chflags nohidden ~/Library"
+  register: cmd_output
+  changed_when: cmd_output.rc != 0

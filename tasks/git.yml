@@ -1,0 +1,119 @@
+---
+
+- name: "[GIT] rebase by default"
+  community.general.git_config:
+    name: pull.rebase
+    scope: global
+    value: true
+
+- name: "[GIT] alias c = commit -am"
+  community.general.git_config:
+    name: alias.c
+    scope: global
+    value: commit -am
+
+- name: "[GIT] alias up = pull"
+  community.general.git_config:
+    name: alias.up
+    scope: global
+    value: pull
+
+- name: "[GIT] alias p = push"
+  community.general.git_config:
+    name: alias.p
+    scope: global
+    value: push
+
+- name: "[GIT] alias s = status -s"
+  community.general.git_config:
+    name: alias.s
+    scope: global
+    value: status -s
+
+- name: "[GIT] alias df = diff --color --color-words --abbrev"
+  community.general.git_config:
+    name: alias.df
+    scope: global
+    value: diff --color --color-words --abbrev
+
+- name: "[GIT] alias lg = ..."
+  community.general.git_config:
+    name: alias.lg
+    scope: global
+    value: log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+
+- name: "[GIT] mergetool.prompt=false"
+  community.general.git_config:
+    name: mergetool.prompt
+    scope: global
+    value: false
+
+- name: "[GIT] difftool.prompt=false"
+  community.general.git_config:
+    name: difftool.prompt
+    scope: global
+    value: false
+
+- name: "[GIT] difftool.trustExitCode=true"
+  community.general.git_config:
+    name: difftool.trustExitCode
+    scope: global
+    value: true
+
+- name: "[GIT] set meld as defalt difftool"
+  community.general.git_config:
+    name: difftool.meld.cmd
+    scope: global
+    value: 'open -W -a Meld --args "$LOCAL" "$PWD/$REMOTE"'
+
+- name: "[GIT] diff.tool=meld"
+  community.general.git_config:
+    name: diff.tool
+    scope: global
+    value: meld
+
+- name: "[GIT] diff.colorMoved=zebra"
+  community.general.git_config:
+    name: diff.colorMoved
+    scope: global
+    value: zebra
+
+- name: "[GIT] merge.tool=meld"
+  community.general.git_config:
+    name: merge.tool
+    scope: global
+    value: meld
+
+- name: "[GIT] set meld as defalt mergetool"
+  community.general.git_config:
+    name: mergetool.meld.cmd
+    scope: global
+    value: 'open -W -a Meld --args --auto-merge "$PWD/$LOCAL" "$PWD/$BASE" "$PWD/$REMOTE" --output="$PWD/$MERGED"'
+
+- name: "[GIT] Configure git to use diff-so-fancy for all diff output"
+  community.general.git_config:
+    name: "{{ item.name }}"
+    scope: global
+    value: "{{ item.value }}"
+  loop:
+    - {name: "core.pager", value: "diff-so-fancy | less --tabs=4 -RFX"}
+    - {name: "interactive.diffFilter", value: "diff-so-fancy --patch"}
+
+- name: "[GIT] Improved colors for the highlighted bits"
+  community.general.git_config:
+    name: "{{ item.name }}"
+    scope: global
+    value: "{{ item.value }}"
+  loop:
+    - {name: "color.ui", value: true}
+    - {name: "color.diff-highlight.oldNormal", value: "red bold"}
+    - {name: "color.diff-highlight.oldHighlight", value: "red bold 52"}
+    - {name: "color.diff-highlight.newNormal", value: "green bold"}
+    - {name: "color.diff-highlight.newHighlight", value: "green bold 52"}
+    - {name: "color.diff.meta", value: "11"}
+    - {name: "color.diff.frag", value: "magenta bold"}
+    - {name: "color.diff.func", value: "146 bold"}
+    - {name: "color.diff.commit", value: "yellow bold"}
+    - {name: "color.diff.old", value: "red bold"}
+    - {name: "color.diff.new", value: "green bold"}
+    - {name: "color.diff.whitespace", value: "red reverse"}

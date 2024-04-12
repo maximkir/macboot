@@ -1,10 +1,23 @@
 {
-  "folders": [
-    {
-      "path": "."
-    }
-  ],
-  "settings": {
-    "editor.formatOnSave": true
-  }
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"extensions": {
+        "recommendations": [
+            // Ansible
+            "redhat.ansible"
+        ]
+    },
+	"settings": {
+    "editor.formatOnSave": true,
+		"files.associations": {
+			"tasks/*.yml": "ansible",
+			"main.yml": "ansible",
+			"default.config.yml": "ansible"
+		  },
+		"ansible.python.activationScript": "activate.sh",
+		"ansible.python.interpreterPath": "env/bin/python"
+	}
 }

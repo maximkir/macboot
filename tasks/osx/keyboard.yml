@@ -1,0 +1,16 @@
+---
+- name: "[Keyboard] Set keyboard repeat rate"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: integer
+    value: 15
+    state: present
+
+- name: "[Keyboard] Set keyboard delay rate"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: integer
+    value: 2
+    state: present

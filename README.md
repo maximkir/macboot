@@ -150,8 +150,6 @@ mas install 497799835
 # Magnet
 mas install 441258766
 
-# Todoist
-mas install 585829637
 ```
 
 

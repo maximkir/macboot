@@ -1,0 +1,53 @@
+---
+
+- name: "[iTerm] Verify ~/Library/Application Support/iTerm2/DynamicProfiles dir"
+  ansible.builtin.file:
+    path: '~/Library/Application Support/iTerm2/DynamicProfiles'
+    state: directory
+    mode: 0755
+
+- name: "[iTerm] Copy dynamic iterm2 profile"
+  ansible.builtin.copy:
+    src: files/regular.plist
+    dest: '{{ iterm_dynamic_profiles_dir }}'
+    backup: true
+    mode: 0755
+
+- name: "[iTerm] Configure iterm2 defaults"
+  community.general.osx_defaults:
+    domain: "com.googlecode.iterm2"
+    key: '{{ item.key }}'
+    type: '{{ item.type }}'
+    value: '{{ item.value }}'
+    state: present
+  with_items:
+    - key: 'Default Bookmark Guid'
+      type: string
+      value: Regular
+    - key: 'PasteTabToStringTabStopSize'
+      type: integer
+      value: 4
+    - key: 'PromptOnQuit'
+      type: boolean
+      value: false
+    - key: 'QuitWhenAllWindowsClosed'
+      type: boolean
+      value: false
+    - key: 'SUEnableAutomaticChecks'
+      type: boolean
+      value: true
+    - key: 'ShowFullScreenTabBar'
+      type: boolean
+      value: true
+    - key: 'UseBorder'
+      type: boolean
+      value: true
+    - key: 'HideTab'
+      type: boolean
+      value: false
+    - key: 'OpenArrangementAtStartup'
+      type: boolean
+      value: false
+    - key: 'OpenNoWindowsAtStartup'
+      type: boolean
+      value: false
