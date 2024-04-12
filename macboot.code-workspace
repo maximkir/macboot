@@ -17,7 +17,6 @@
             "main.yml": "ansible",
             "default.config.yml": "ansible"
           },
-        "ansible.python.activationScript": "activate.sh",
-        "ansible.python.interpreterPath": "env/bin/python"
+        "ansible.python.activationScript": "activate.sh"
     }
 }
