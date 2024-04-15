@@ -1,0 +1,38 @@
+---
+- name: Configure host.
+  hosts: all
+  vars_files:
+    - default.config.yml
+  pre_tasks:
+    - name: Include playbook configuration.
+      ansible.builtin.include_vars: '{{ item }}'
+      with_fileglob:
+        - '{{ playbook_dir }}/config.yml'
+      tags:
+        - always
+  tasks:  # ordered
+    - name: Import Osx tasks
+      ansible.builtin.import_tasks: tasks/osx.yml
+      tags:
+        - osx
+    - name: Import homebrew tasks
+      ansible.builtin.import_tasks: tasks/homebrew.yml
+      tags:
+        - homebrew
+    - name: Import terminal tasks
+      ansible.builtin.import_tasks: tasks/terminal.yml
+      tags:
+        - terminal
+    - name: Import iterm tasks
+      ansible.builtin.import_tasks: tasks/iterm.yml
+      when: "'iterm2' in homebrew_cask_apps"
+      tags:
+        - iterm
+    - name: Import extra packages tasks
+      ansible.builtin.import_tasks: tasks/extra-packages.yml
+      tags:
+        - extra-packages
+    - name: Import git tasks
+      ansible.builtin.import_tasks: tasks/git.yml
+      tags:
+        - git

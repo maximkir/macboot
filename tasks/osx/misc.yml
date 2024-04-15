@@ -1,0 +1,47 @@
+---
+
+- name: "[Misc] Save to disk (not to iCloud) by default"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSDocumentSaveNewDocumentsToCloud
+    type: bool
+    value: false
+    state: present
+
+- name: "[Misc] Automatically quit printer app once the print jobs complete"
+  community.general.osx_defaults:
+    domain: com.apple.print.PrintingPrefs
+    key: "Quit When Finished"
+    type: bool
+    value: true
+    state: present
+
+- name: "[Misc] Disable the “Are you sure you want to open this application?” dialog"
+  community.general.osx_defaults:
+    domain: com.apple.LaunchServices
+    key: LSQuarantine
+    type: bool
+    value: false
+    state: present
+
+- name: "[Misc] Set AppleMeasurementUnits to Centimeters"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleMeasurementUnits
+    type: string
+    value: Centimeters
+    state: present
+
+- name: "[Misc] Set AppleMetricUnits=true"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: AppleMetricUnits
+    type: bool
+    value: true
+
+- name: "[Misc] Disable auto-correct"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: bool
+    value: false

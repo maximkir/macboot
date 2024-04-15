@@ -2,13 +2,14 @@
 
 [![Build Status](https://github.com/maximkir/macboot/workflows/ci-workflow/badge.svg?branch=master)](https://github.com/maximkir/macboot/actions)
 
-This project helps me to bootstrap my development machines. During the last ten years of development, I've noticed a lot of time spent setting up a new appliance.
-As a software engineer, the DRY principle echoed in my head. Hence, I decided to automate it to save some time for myself (and my colleagues).
+This project helped me bootstrap my development machines. During the last ten years of development, I've noticed a lot of time spent setting up a new appliance.
+As a software engineer, I've always kept the DRY principle in mind. Therefore, I decided to automate the process, which could save time for myself and my colleagues.
 
-This is a work in progress and is primarily a means to document my current Mac's setup. I'll be evolving this set of tools over time.
+This is a work in progress and mainly serves as a means to document my current Mac setup. I will be updating this set of tools over time.
 
 The project introduces no magic but a simple usage of the Ansible playbook that allows configuring various aspects of the machine.
 
+The MacBoot automation tool execution is idempotent; subsequent runs won't change anything.
 
 *See also*:
   - [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
@@ -21,115 +22,64 @@ The project introduces no magic but a simple usage of the Ansible playbook that 
 
 1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
 2. Clone this repository to your machine.
-3. Execute `make zsh` or `make bash` to start a terminal with relevant depedencies.
-4. Alternatively, for the first time execute `make run-all` to install all roles.
-
-### Running a specific set of tagged tasks
-
-You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook`'s `--tags` flag. The tags available are `dotfiles`, `iterm2`, `macos`, `ssh-keys`, `software`, `sublime` and `zsh`.
-
-    `ansible-playbook local_env.yml -i inventory -K --tags "dotfiles,macos"`
-
-## Dotfiles
-
-The 'dotfiles' tag will install my [dotfiles](https://github.com/maximkir/dotfiles) into the current user's home directory.
+3. Open a terminal and execute `./setup.sh` to install relevant dependencies.
 
 
-## iTerm2
+## Running a specific set of tagged tasks
 
-The 'iterm2' tag will install extensions for the [iTerm2](https://www.iterm2.com/) terminal:
-* [A set of color schemes for iTerm2](https://github.com/mbadolato/iTerm2-Color-Schemes)
+### First Time Execution
+If you are already familiar with the brew software manager and have your preferred picks, see [this](#overriding-defaults) section on extending the default apps list.
 
+For the first time, run the entire play by executing:  
 
-## ZSH
+> Note that your computer password is required for the initial provisioning process. The `-K` flag instructs `ansible` to request it.
 
-The 'zsh' tag will:
-* Install zsh
-* Install [oh-my-zsh](https://ohmyz.sh/), plugins and themes
-* Install [Powerline](https://github.com/powerline/fonts) fonts
-* Configure [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme
+    ```bash
+    source activate.sh
+    ansible-playbook main.yml -K
+    ```
 
-## MacOS
+Once the provisioning is running, it's time for coffee.
 
-The 'macos' tag will set some defaults in macos operating system.
+**Restart your computer once the provisioning process is finished.**
 
-## ⚙️ Software
+### On-Demand Execution
 
-The 'software' tag will install applications as follows:
+You can filter which part of the provisioning process to run by specifying a set of tags using the flag of `ansible-playbook` `--tags`. Check the [main.yml](main.yml) file for the list of all available tags.
 
-### Included Applications / Configuration (Default)
+    ``` bash
+    source activate.sh
+    ansible-playbook main.yml --tags "homebrew,git"
+    ```
 
-Applications (installed with Homebrew Cask):
+---
+# Overriding Defaults
 
-  - [Docker](https://www.docker.com/)
-  - [Google Chrome](https://www.google.com/chrome/)
-  - [Homebrew](http://brew.sh/)
-  - [Sublime Text](https://www.sublimetext.com/)
-  - [Intellij-idea](https://www.jetbrains.com/idea/)
-  - [Pycharm-ce](https://www.jetbrains.com/pycharm/)
-  - [Visualvm](https://visualvm.github.io/)
-  - [iterm2](https://www.iterm2.com/)
-  - [Alfred](https://www.alfredapp.com/)
-  - [Postman](https://www.getpostman.com/)
-  - [Spotify](https://www.spotify.com/)
+Some people's development environments and preferred software configurations are different.
 
-Packages (installed with Homebrew):
+You can override any defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed apps with something like:
 
-  - coreutils
-  - duf
-  - findutils
-  - htop
-  - ack
-  - git
-  - curl
-  - wget
-  - zsh
-  - gnupg
-  - tree
-  - awscli
-  - pyenv
-  - kubectl
-  - lastpass-cli
-  - mas
+```yaml
+homebrew_installed_packages:
+  - go
+
+```
+
+Similar options available for extending the apps list:
+
+```yaml
+homebrew_cask_apps_user:
+  - google-chrome
+  - alfred
+  - pycharm
+  - webstorm
+```
 
 ## 🛠️ 🐢 Manual Steps
 
-### 🔐 Download Private & Public Keys from LastPass
+### Add Keys to SSH Agent
 
-I have a set of public and private keys pairs that I use for different purposes. To avoid their re-creation or copying, I store them in a vault ([LastPass](https://www.lastpass.com/)) and fetch them once needed by the following commands:
-
-Login:
-
-``` bash
-lpass login USERNAME
-```
-
-Upload Key Pair:
-
-``` bash
-entry_name="dummy_folder/dummy_note"
-pub_key_path=~/.ssh/dummy_id_rsa.pub
-pvt_key_path=~/.ssh/dummy_id_rsa
-
-printf "Private Key: %s\nPublic Key: %s\n" \
-  "$(cat ${pvt_key_path})" "$(cat ${pub_key_path})" \
-    | lpass add --non-interactive --sync=now --note-type=ssh-key ${entry_name}
-```
-
-Download Key Pair:
-
-``` bash
-entry_name="dummy_folder/dummy_note"
-pub_key_path=~/.ssh/dummy_id_rsa.pub
-pvt_key_path=~/.ssh/dummy_id_rsa
-
-lpass show ${entry_name} --field="Public Key" > ${pub_key_path}
-lpass show ${entry_name} --field="Private Key" > ${pvt_key_path}
-```
-
-Add Keys to SSH Agent:
-
-Add the following snippet to `~/.zshrc.local` file:
+Add the following snippet to the `~/.zshrc.local` file:
 
 ``` bash
 for file in ~/.ssh/{id_rsa,id_rsa_work}; do
@@ -150,8 +100,6 @@ mas install 497799835
 # Magnet
 mas install 441258766
 
-# Todoist
-mas install 585829637
 ```
 
 

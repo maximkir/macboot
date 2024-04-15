@@ -1,5 +1,0 @@
-
-- name: Set system defaults
-  import_tasks: osx.yml
-  when: ansible_os_family == "Darwin"
-  changed_when: false

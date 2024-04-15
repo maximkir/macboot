@@ -1,0 +1,86 @@
+---
+user_home: "{{ '~' | expanduser }}"
+
+install_homebrew_if_missing: true
+brew_path: "{{ '/opt/homebrew/bin/brew' if ansible_architecture == 'arm64' else '/usr/local/bin/brew' }}"
+
+iterm_dynamic_profiles_dir: "{{user_home}}/Library/Application Support/iTerm2/DynamicProfiles"
+
+homebrew_taps:
+  - homebrew/cask-fonts
+
+homebrew_installed_packages:
+  - coreutils
+  - duf
+  - findutils
+  - git
+  - git-lfs
+  - curl
+  - wget
+  - openssl
+  - pango
+  - cairo
+  - pkg-config
+  - libpng
+  - jpeg
+  - giflib
+  - librsvg
+  # GitHub CLI
+  - gh
+  - pyenv
+  - hey
+  # https://dev.to/lissy93/cli-tools-you-cant-live-without-57f6
+  - tldr
+  - exa
+  - duf
+  - bat
+  - diff-so-fancy
+  - jq
+  - procs
+  - tre
+  - bandwhich
+  - ctop
+  - bpytop
+  - dua-cli
+  - lazygit
+
+# Mac Apps to be installed with homebrew-cask
+homebrew_cask_apps:
+  # https://github.com/tonsky/FiraCode
+  - font-fira-code
+  # https://www.sourcetreeapp.com/
+  - sourcetree
+  # https://code.visualstudio.com/
+  - visual-studio-code
+  # Docker
+  - docker
+  # https://iterm2.com/
+  - iterm2
+  # https://meld.app/
+  - meld
+
+
+oh_my_zsh_home: "{{user_home}}/.oh-my-zsh"
+oh_my_zsh_theme: "powerlevel10k/powerlevel10k"
+oh_my_zsh_custom_plugins:
+  - name: zsh-syntax-highlighting
+    repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    version: 754cefe0181a7acd42fdcb357a67d0217291ac47
+  - name: zsh-autosuggestions
+    repo: "https://github.com/zsh-users/zsh-autosuggestions.git"
+    version: a411ef3e0992d4839f0732ebeb9823024afaaaa8
+  - name: zsh-completions
+    repo: "https://github.com/zsh-users/zsh-completions.git"
+    version: 98ea8e685c1a9630a21b39a1596cb94794d1cb3c
+
+oh_my_zsh_custom_themes:
+  - name: powerlevel10k
+    repo: "https://github.com/romkatv/powerlevel10k.git"
+    version: v1.17.0
+
+oh_my_zsh_plugins:
+  - git
+  - zsh-completions
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+  - z

@@ -1,0 +1,8 @@
+---
+homebrew_installed_packages:
+  - bash-completion
+  - wget
+
+
+homebrew_cask_apps:
+  - iterm2

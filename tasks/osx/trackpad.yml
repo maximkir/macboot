@@ -1,0 +1,76 @@
+---
+
+- name: "Trackpad [Bluetooth]: enable tap to click for this user and for the login screen"
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: int
+    value: 0
+    state: present
+
+- name: "Trackpad: Change Tracking speed"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 2.5
+    state: present
+
+- name: "Mouse [TapBehavior, currentHost]: enable tap to click for this user and for the login screen"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    host: currentHost
+    type: int
+    value: 1
+    state: present
+
+- name: "Mouse [TapBehavior]: enable tap to click for this user and for the login screen"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    type: int
+    value: 1
+    state: present
+
+- name: "Trackpad [CornerSecondaryClick]: map bottom right corner to right-click"
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadCornerSecondaryClick
+    type: int
+    value: 2
+    state: present
+
+- name: "Trackpad [RightClick]: map bottom right corner to right-click"
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadRightClick
+    type: bool
+    value: true
+    state: present
+
+- name: "Trackpad [CornerClickBehavior]: map bottom right corner to right-click"
+  community.general.osx_defaults:
+    host: currentHost
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.trackpadCornerClickBehavior
+    type: int
+    value: 1
+    state: present
+
+- name: "Trackpad [EnableSecondaryClick]: map bottom right corner to right-click"
+  community.general.osx_defaults:
+    host: currentHost
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.enableSecondaryClick
+    type: bool
+    value: true
+    state: present
+
+- name: Disable “natural” (Lion-style) scrolling
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.swipescrolldirection
+    type: bool
+    value: false
+    state: present

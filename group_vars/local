@@ -1,3 +1,0 @@
-
-#  Local home directory
-user_home: "{{ '~' | expanduser }}"

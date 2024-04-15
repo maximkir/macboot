@@ -1,3 +1,0 @@
-
-- name: Install Oh My Zsh
-  script: install_oh_my_zsh.sh

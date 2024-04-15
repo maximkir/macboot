@@ -1,0 +1,79 @@
+---
+
+- name: Check if Oh My Zsh already installed
+  ansible.builtin.stat:
+    path: "{{ oh_my_zsh_home }}"
+  register: oh_my_zsh
+
+- name: Print MSG in case Oh My Zsh already instlled
+  ansible.builtin.debug:
+    msg: "Oh My Zsh already installed"
+  when: oh_my_zsh.stat.exists
+
+- name: Print MSG in case Oh My Zsh not instlled
+  ansible.builtin.debug:
+    msg: "Oh My Zsh not installed"
+  when: not oh_my_zsh.stat.exists
+
+- name: Install Oh My Zsh
+  when: not oh_my_zsh.stat.exists
+  ansible.builtin.shell: >
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  register: install_output
+  changed_when: install_output.rc != 0
+
+- name: Clone oh-my-zsh custom plugins
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ oh_my_zsh_home }}/custom/plugins/{{ item.name }}"
+    accept_hostkey: true
+    update: true
+    version: "{{ item.version }}"
+    depth: 1
+  with_items: "{{ oh_my_zsh_custom_plugins }}"
+
+- name: Clone oh-my-zsh custom themes
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "{{ oh_my_zsh_home }}/custom/themes/{{ item.name }}"
+    accept_hostkey: true
+    update: true
+    version: "{{ item.version }}"
+    depth: 1
+  with_items: "{{ oh_my_zsh_custom_themes }}"
+
+- name: Update oh-my-zsh theme
+  ansible.builtin.lineinfile:
+    path: "{{ user_home }}/.zshrc"
+    regexp: '^ZSH_THEME='
+    line: 'ZSH_THEME="{{ oh_my_zsh_theme }}"'
+
+- name: Update oh-my-zsh plugins
+  ansible.builtin.lineinfile:
+    path: "{{ user_home }}/.zshrc"
+    regexp: '^plugins='
+    line: "plugins=({{ oh_my_zsh_plugins | join(' ') }})"
+
+- name: Update command execution date format in history
+  ansible.builtin.lineinfile:
+    path: "{{ user_home }}/.zshrc"
+    regexp: '^# HIST_STAMPS='
+    line: 'HIST_STAMPS="dd.mm.yyyy"'
+
+- name: Insert .zshrc.local file load
+  ansible.builtin.blockinfile:
+    path: "{{ user_home }}/.zshrc"
+    backup: true
+    marker: "## {mark} FAINLINES MANAGED BLOCK"
+    block: |
+      [ -r ~/.zshrc.local ] && source ~/.zshrc.local
+
+- name: Update .zshrc.local with content
+  ansible.builtin.blockinfile:
+    path: "{{ user_home }}/.zshrc.local"
+    insertbefore: BOF
+    backup: true
+    create: true
+    mode: 0644
+    marker: "## {mark} MACBOOT MANAGED BLOCK - Don't modify"
+    block: "{{ lookup('ansible.builtin.file', 'files/zshrc.local.j2') }}"
