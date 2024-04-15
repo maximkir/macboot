@@ -7,8 +7,6 @@ brew_path: "{{ '/opt/homebrew/bin/brew' if ansible_architecture == 'arm64' else 
 iterm_dynamic_profiles_dir: "{{user_home}}/Library/Application Support/iTerm2/DynamicProfiles"
 
 homebrew_taps:
-  - homebrew/core
-  - homebrew/cask
   - homebrew/cask-fonts
 
 homebrew_installed_packages:
