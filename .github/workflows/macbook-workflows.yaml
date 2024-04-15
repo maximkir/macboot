@@ -19,7 +19,8 @@ jobs:
       - uses: actions/setup-python@v5
 
       - name: Setup
-        run: >
+        run: |
+          ./tests/uninstall-homebrew.sh
           ./setup.sh
 
       - name: Lint
