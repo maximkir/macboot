@@ -27,3 +27,8 @@ jobs:
           source activate.sh
           ansible-lint
           ansible-playbook main.yml --syntax-check
+
+      - name: Homebrew sanity
+        run: |
+          source activate.sh
+          ansible-playbook main.yml --tags "homebrew"
