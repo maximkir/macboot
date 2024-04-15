@@ -34,10 +34,10 @@ For the first time, run the entire play by executing:
 
 > Note that your computer password is required for the initial provisioning process. The `-K` flag instructs `ansible` to request it.
 
-    ```bash
-    source activate.sh
-    ansible-playbook main.yml -K
-    ```
+  ```bash
+  source activate.sh
+  ansible-playbook main.yml -K
+  ```
 
 Once the provisioning is running, it's time for coffee.
 
@@ -47,10 +47,10 @@ Once the provisioning is running, it's time for coffee.
 
 You can filter which part of the provisioning process to run by specifying a set of tags using the flag of `ansible-playbook` `--tags`. Check the [main.yml](main.yml) file for the list of all available tags.
 
-    ``` bash
-    source activate.sh
-    ansible-playbook main.yml --tags "homebrew,git"
-    ```
+  ``` bash
+  source activate.sh
+  ansible-playbook main.yml --tags "homebrew,git"
+  ```
 
 ---
 # Overriding Defaults
