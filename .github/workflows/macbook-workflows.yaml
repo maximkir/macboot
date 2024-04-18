@@ -1,6 +1,6 @@
 ---
 
-name: ci-workflow
+name: CI
 
 on:
   schedule:

@@ -1,6 +1,6 @@
 # 💻 📦 🚀 MacBoot
 
-[![Build Status](https://github.com/maximkir/macboot/workflows/ci-workflow/badge.svg?branch=master)](https://github.com/maximkir/macboot/actions)
+![Build Status](https://github.com/maximkir/macboot/actions/workflows/macbook-workflows.yaml/badge.svg?branch=master)
 
 This project helped me bootstrap my development machines. During the last ten years of development, I've noticed a lot of time spent setting up a new appliance.
 As a software engineer, I've always kept the DRY principle in mind. Therefore, I decided to automate the process, which could save time for myself and my colleagues.
