@@ -17,6 +17,7 @@
             "main.yml": "ansible",
             "default.config.yml": "ansible"
           },
-        "ansible.python.activationScript": "activate.sh"
+        "ansible.python.activationScript": "activate.sh",
+        "ansible.python.interpreterPath": "/Users/maxim/workspace/macboot/.venv/bin/python"
     }
 }
