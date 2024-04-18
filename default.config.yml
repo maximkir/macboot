@@ -28,7 +28,7 @@ homebrew_installed_packages:
   # GitHub CLI
   - gh
   - pyenv
-  - hey
+  # - hey
   # https://dev.to/lissy93/cli-tools-you-cant-live-without-57f6
   - tldr
   - duf
