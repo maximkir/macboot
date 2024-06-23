@@ -6,6 +6,12 @@
     scope: global
     value: true
 
+- name: "[GIT] alias staash = stash -all"
+  community.general.git_config:
+    name: alias.staash
+    scope: global
+    value: stash -all
+
 - name: "[GIT] alias c = commit -am"
   community.general.git_config:
     name: alias.c
