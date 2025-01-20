@@ -42,6 +42,10 @@ homebrew_installed_packages:
   - bpytop
   - dua-cli
   - lazygit
+  - fzf
+  - ripgrep
+  - fd
+  - nvim
 
 # Mac Apps to be installed with homebrew-cask
 homebrew_cask_apps:
