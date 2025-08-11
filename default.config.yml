@@ -46,6 +46,7 @@ homebrew_installed_packages:
   - ripgrep
   - fd
   - nvim
+  - rye
 
 # Mac Apps to be installed with homebrew-cask
 homebrew_cask_apps:
