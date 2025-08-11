@@ -6,9 +6,6 @@ brew_path: "{{ '/opt/homebrew/bin/brew' if ansible_architecture == 'arm64' else 
 
 iterm_dynamic_profiles_dir: "{{user_home}}/Library/Application Support/iTerm2/DynamicProfiles"
 
-homebrew_taps:
-  - homebrew/cask-fonts
-
 homebrew_installed_packages:
   - coreutils
   - duf
@@ -60,7 +57,6 @@ homebrew_cask_apps:
   - zed
   # https://meld.app/
   - meld
-
 
 oh_my_zsh_home: "{{user_home}}/.oh-my-zsh"
 oh_my_zsh_theme: "powerlevel10k/powerlevel10k"
