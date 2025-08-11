@@ -51,14 +51,10 @@ homebrew_installed_packages:
 homebrew_cask_apps:
   # https://github.com/tonsky/FiraCode
   - font-fira-code
-  # https://www.sourcetreeapp.com/
-  - sourcetree
-  # https://code.visualstudio.com/
-  - visual-studio-code
-  # Docker
-  - docker
   # https://iterm2.com/
   - iterm2
+  # https://zed.dev/
+  - zed
   # https://meld.app/
   - meld
 
