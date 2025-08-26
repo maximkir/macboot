@@ -70,6 +70,9 @@ oh_my_zsh_custom_plugins:
   - name: zsh-completions
     repo: "https://github.com/zsh-users/zsh-completions.git"
     version: 98ea8e685c1a9630a21b39a1596cb94794d1cb3c
+  - name: zsh-nvm
+    repo: "https://github.com/lukechilds/zsh-nvm.git"
+    version: 745291dcf20686ec421935f1c3f8f3a2918dd106
 
 oh_my_zsh_custom_themes:
   - name: powerlevel10k
@@ -82,3 +85,4 @@ oh_my_zsh_plugins:
   - zsh-syntax-highlighting
   - zsh-autosuggestions
   - z
+  - zsh-nvm
