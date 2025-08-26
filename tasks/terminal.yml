@@ -42,11 +42,11 @@
     depth: 1
   with_items: "{{ oh_my_zsh_custom_themes }}"
 
-- name: Update oh-my-zsh theme
-  ansible.builtin.lineinfile:
+- name: Comment out oh-my-zsh theme
+  ansible.builtin.replace:
     path: "{{ user_home }}/.zshrc"
-    regexp: '^ZSH_THEME='
-    line: 'ZSH_THEME="{{ oh_my_zsh_theme }}"'
+    regexp: '^(ZSH_THEME=.*)'
+    replace: '#\1'
 
 - name: Update oh-my-zsh plugins
   ansible.builtin.lineinfile:
@@ -66,6 +66,7 @@
     backup: true
     marker: "## {mark} MACBOOT MANAGED BLOCK"
     block: |
+      eval "$(starship init zsh)"
       [ -r ~/.zshrc.local ] && source ~/.zshrc.local
 
 - name: Update .zshrc.local with content

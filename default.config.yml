@@ -42,8 +42,8 @@ homebrew_installed_packages:
   - fzf
   - ripgrep
   - fd
-  - nvim
   - uv
+  - starship
 
 # Mac Apps to be installed with homebrew-cask
 homebrew_cask_apps:
@@ -59,7 +59,6 @@ homebrew_cask_apps:
   - meld
 
 oh_my_zsh_home: "{{user_home}}/.oh-my-zsh"
-oh_my_zsh_theme: "powerlevel10k/powerlevel10k"
 oh_my_zsh_custom_plugins:
   - name: zsh-syntax-highlighting
     repo: "https://github.com/zsh-users/zsh-syntax-highlighting.git"
