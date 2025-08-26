@@ -64,7 +64,7 @@
   ansible.builtin.blockinfile:
     path: "{{ user_home }}/.zshrc"
     backup: true
-    marker: "## {mark} FAINLINES MANAGED BLOCK"
+    marker: "## {mark} MACBOOT MANAGED BLOCK"
     block: |
       [ -r ~/.zshrc.local ] && source ~/.zshrc.local
 
