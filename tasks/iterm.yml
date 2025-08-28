@@ -6,12 +6,12 @@
     state: directory
     mode: 0755
 
-- name: "[iTerm] Copy dynamic iterm2 profile"
-  ansible.builtin.copy:
-    src: files/regular.plist
-    dest: '{{ iterm_dynamic_profiles_dir }}'
-    backup: true
-    mode: 0755
+#- name: "[iTerm] Copy dynamic iterm2 profile"
+#  ansible.builtin.copy:
+#    src: files/regular.plist
+#    dest: '{{ iterm_dynamic_profiles_dir }}'
+#    backup: true
+#    mode: 0755
 
 - name: "[iTerm] Configure iterm2 defaults"
   community.general.osx_defaults:
