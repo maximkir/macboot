@@ -1,109 +1,217 @@
-# 💻 📦 🚀 MacBoot
+# 💻 MacBoot - Automated macOS Development Environment
 
 ![Build Status](https://github.com/maximkir/macboot/actions/workflows/macbook-workflows.yaml/badge.svg?branch=master)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-This project helped me bootstrap my development machines. During the last ten years of development, I've noticed a lot of time spent setting up a new appliance.
-As a software engineer, I've always kept the DRY principle in mind. Therefore, I decided to automate the process, which could save time for myself and my colleagues.
+> **Automate your macOS development setup with Ansible**
 
-This is a work in progress and mainly serves as a means to document my current Mac setup. I will be updating this set of tools over time.
+MacBoot is an opinionated, yet customizable Ansible playbook that transforms a fresh macOS installation into a fully configured development environment. Born from years of manually setting up development machines, this tool embodies the DRY principle by automating the tedious process of configuring a new Mac.
 
-The project introduces no magic but a simple usage of the Ansible playbook that allows configuring various aspects of the machine.
+## ✨ Features
 
-The MacBoot automation tool execution is idempotent; subsequent runs won't change anything.
+- 🏗️ **Complete Environment Setup**: Installs and configures essential development tools
+- 🍺 **Homebrew Integration**: Manages packages and cask applications
+- ⚡ **Modern CLI Tools**: Includes productivity tools like `ripgrep`, `fzf`, `bat`, and more
+- 🐚 **Zsh Enhancement**: Sets up Oh My Zsh with popular plugins and themes
+- 🔧 **Git Configuration**: Configures Git with sensible defaults
+- 🖥️ **iTerm2 Setup**: Configures iTerm2 with custom profiles
+- 🎨 **macOS Customization**: Applies system preferences and UI tweaks
+- 🔄 **Idempotent**: Safe to run multiple times without side effects
+- 📝 **Highly Customizable**: Override defaults with your own configuration
 
-*See also*:
-  - [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
+## 🚀 Quick Start
 
-## ⚓ Requirements
-* Python3 (3.3+)
-* pyenv
+### Prerequisites
 
-## ✨ Installation
+Before running MacBoot, ensure you have:
 
-1. Ensure Apple's command line tools are installed (`xcode-select --install` to launch the installer).
-2. Clone this repository to your machine.
-3. Open a terminal and execute `./setup.sh` to install relevant dependencies.
+- **macOS** (tested on recent versions)
+- **Python 3.3+** (usually pre-installed)
+- **Command Line Tools**: Install with `xcode-select --install`
 
+### One-Line Installation
 
-## Running a specific set of tagged tasks
+```bash
+git clone https://github.com/maximkir/macboot.git && cd macboot && ./setup.sh
+```
 
-### First Time Execution
-If you are already familiar with the brew software manager and have your preferred picks, see [this](#overriding-defaults) section on extending the default apps list.
+### Step-by-Step Installation
 
-For the first time, run the entire play by executing:  
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/maximkir/macboot.git
+   cd macboot
+   ```
 
-> Note that your computer password is required for the initial provisioning process. The `-K` flag instructs `ansible` to request it.
+2. **Install dependencies**:
+   ```bash
+   ./setup.sh
+   ```
 
-  ```bash
-  source activate.sh
-  ansible-playbook main.yml -K
-  ```
+3. **Run the playbook**:
+   ```bash
+   source activate.sh
+   ansible-playbook main.yml -K
+   ```
 
-Once the provisioning is running, it's time for coffee.
+4. **Restart your Mac** after the provisioning completes.
 
-**Restart your computer once the provisioning process is finished.**
+## 📦 What Gets Installed
 
-### On-Demand Execution
+### Homebrew Packages
+- **Core utilities**: `coreutils`, `findutils`, `curl`, `wget`
+- **Development tools**: `git`, `git-lfs`, `gh` (GitHub CLI), `pyenv`
+- **Modern CLI replacements**: `bat`, `ripgrep`, `fd`, `fzf`, `jq`
+- **System monitoring**: `bpytop`, `ctop`, `procs`, `duf`, `bandwhich`
+- **Productivity**: `tldr`, `lazygit`, `starship` prompt
 
-You can filter which part of the provisioning process to run by specifying a set of tags using the flag of `ansible-playbook` `--tags`. Check the [main.yml](main.yml) file for the list of all available tags.
+### Applications (Cask)
+- **Terminal**: iTerm2 with custom configuration
+- **Development**: Zed editor, OrbStack (Docker alternative)
+- **Utilities**: Meld (diff tool)
+- **Fonts**: Fira Code
 
-  ``` bash
-  source activate.sh
-  ansible-playbook main.yml --tags "homebrew,git"
-  ```
+### Shell Enhancement
+- **Oh My Zsh** with curated plugins:
+  - `zsh-syntax-highlighting`
+  - `zsh-autosuggestions` 
+  - `zsh-completions`
+  - `zsh-nvm`
+- **Powerlevel10k** theme for a beautiful prompt
 
----
-# Overriding Defaults
+## ⚙️ Customization
 
-Some people's development environments and preferred software configurations are different.
+Create a `config.yml` file in the project root to override any defaults from `default.config.yml`.
 
-You can override any defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed apps with something like:
+### Example: Custom Package List
 
 ```yaml
+# Add your preferred packages
 homebrew_installed_packages:
   - go
+  - rust
+  - nodejs
+  - docker
 
-```
-
-Similar options available for extending the apps list:
-
-```yaml
+# Add your preferred applications
 homebrew_cask_apps_user:
   - google-chrome
-  - alfred
-  - pycharm
-  - webstorm
+  - visual-studio-code
+  - slack
+  - notion
 ```
 
-## 🛠️ 🐢 Manual Steps
+### Example: Custom Zsh Plugins
 
-### Add Keys to SSH Agent
+```yaml
+oh_my_zsh_plugins:
+  - git
+  - docker
+  - kubectl
+  - terraform
+  - zsh-syntax-highlighting
+  - zsh-autosuggestions
+```
 
-Add the following snippet to the `~/.zshrc.local` file:
+## 🏷️ Running Specific Tasks
 
-``` bash
+Use Ansible tags to run only specific parts of the setup:
+
+```bash
+# Install only Homebrew packages
+ansible-playbook main.yml --tags "homebrew"
+
+# Configure only Git and terminal
+ansible-playbook main.yml --tags "git,terminal"
+
+# Set up macOS preferences only
+ansible-playbook main.yml --tags "osx"
+```
+
+### Available Tags
+
+| Tag | Description |
+|-----|-------------|
+| `osx` | macOS system preferences and tweaks |
+| `homebrew` | Homebrew installation and package management |
+| `terminal` | Zsh and Oh My Zsh configuration |
+| `iterm` | iTerm2 setup and profiles |
+| `git` | Git configuration |
+| `extra-packages` | Additional package installations |
+
+## 🛠️ Manual Steps
+
+Some configurations require manual intervention:
+
+### SSH Key Management
+
+Add to `~/.zshrc.local`:
+
+```bash
+# Auto-load SSH keys
 for file in ~/.ssh/{id_rsa,id_rsa_work}; do
-	[ -r "$file" ] && ssh-add "$file" > /dev/null 2>&1
+    [ -r "$file" ] && ssh-add "$file" > /dev/null 2>&1
 done
-
 unset file
 ```
 
-### Mac App Store
-Not all software is available for installation through brew. The [mas](https://github.com/mas-cli/mas) utility is handy for installing purchased software from the Mac App Store.
+### Mac App Store Applications
 
+Use `mas` (installed via Homebrew) for App Store purchases:
 
-``` bash
-# Xcode
+```bash
+# Xcode (if needed)
 mas install 497799835
 
-# Magnet
+# Magnet (window manager)
 mas install 441258766
-
 ```
 
+## 🔍 Troubleshooting
+
+### Common Issues
+
+**Virtual Environment Error**: If you see a virtualenv warning, deactivate it:
+```bash
+deactivate
+./setup.sh
+```
+
+**Permission Denied**: The playbook needs sudo access for some operations:
+```bash
+ansible-playbook main.yml -K  # -K prompts for sudo password
+```
+
+**Homebrew Path Issues**: The playbook automatically detects Intel vs Apple Silicon Macs.
+
+### Getting Help
+
+1. Check the [Issues](https://github.com/maximkir/macboot/issues) page
+2. Review the Ansible output for specific error messages
+3. Ensure all prerequisites are met
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test on a clean macOS installation
+5. Submit a pull request
+
+## 🙏 Acknowledgments
+
+- Inspired by [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
+- Built with [Ansible](https://www.ansible.com/)
+- CLI tools recommendations from [CLI tools you can't live without](https://dev.to/lissy93/cli-tools-you-cant-live-without-57f6)
 
 ## 📄 License
 
-macboot was created by [@maximkir](https://github.com/maximkir).
-Code is under the [Apache 2.0 license](LICENSE).
+This project is licensed under the [Apache 2.0 License](LICENSE).
+
+---
+
+**MacBoot** - Because setting up a new Mac shouldn't take all day ☕
+
+*Created with ❤️ by [@maximkir](https://github.com/maximkir)*
