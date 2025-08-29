@@ -1,5 +1,4 @@
 ---
-
 - name: "Trackpad [Bluetooth]: enable tap to click for this user and for the login screen"
   community.general.osx_defaults:
     domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
@@ -14,6 +13,14 @@
     key: com.apple.trackpad.scaling
     type: float
     value: 2.5
+    state: present
+
+- name: "Mouse: Set tracking speed to maximum"
+  community.general.osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.mouse.scaling
+    type: float
+    value: 3.0
     state: present
 
 - name: "Mouse [TapBehavior, currentHost]: enable tap to click for this user and for the login screen"
