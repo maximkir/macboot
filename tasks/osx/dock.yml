@@ -105,11 +105,6 @@
     type: bool
     value: true
 
-- name: "[Dock] Reset Launchpad"
-  ansible.builtin.command: "find \"~/Library/Application Support/Dock\" -name \"*.db\" -maxdepth 1 -delete"
-  register: cmd_output
-  changed_when: cmd_output.rc != 0
-
 # Hot corners
 # Possible values:
 #  0: no-op
