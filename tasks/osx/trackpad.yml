@@ -40,6 +40,23 @@
     value: 1
     state: present
 
+- name: "Mouse [SecondaryClick]: enable secondary click (right-click on right side)"
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleHIDMouse
+    key: Button2
+    type: int
+    value: 2
+    state: present
+
+- name: "Mouse [SecondaryClick, currentHost]: enable secondary click (right-click on right side)"
+  community.general.osx_defaults:
+    domain: com.apple.driver.AppleHIDMouse
+    key: Button2
+    host: currentHost
+    type: int
+    value: 2
+    state: present
+
 - name: "Trackpad [CornerSecondaryClick]: map bottom right corner to right-click"
   community.general.osx_defaults:
     domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
