@@ -1,5 +1,4 @@
 ---
-
 - name: "[Misc] Save to disk (not to iCloud) by default"
   community.general.osx_defaults:
     domain: NSGlobalDomain
@@ -45,3 +44,19 @@
     key: NSAutomaticSpellingCorrectionEnabled
     type: bool
     value: false
+
+- name: "[Misc] Hide Siri from menu bar"
+  community.general.osx_defaults:
+    domain: com.apple.Siri
+    key: StatusMenuVisible
+    type: bool
+    value: false
+    state: present
+
+- name: "[Misc] Hide Spotlight from menu bar"
+  community.general.osx_defaults:
+    domain: com.apple.Spotlight
+    key: MenuItemHidden
+    type: bool
+    value: true
+    state: present
