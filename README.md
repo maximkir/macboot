@@ -81,19 +81,20 @@ git clone https://github.com/maximkir/macboot.git && cd macboot && ./setup.sh
 
 ## ⚙️ Customization
 
-Create a `config.yml` file in the project root to override any defaults from `default.config.yml`.
+MacBoot offers two approaches for customization, depending on your needs:
 
-### Example: Custom Package List
+### 🔧 Quick Customization (Local Override)
+
+For one-time or temporary changes, create a `config.yml` file in the project root to override defaults:
 
 ```yaml
-# Add your preferred packages
+# config.yml - overrides default.config.yml
 homebrew_installed_packages:
   - go
   - rust
   - nodejs
   - docker
 
-# Add your preferred applications
 homebrew_cask_apps_user:
   - google-chrome
   - visual-studio-code
@@ -101,17 +102,108 @@ homebrew_cask_apps_user:
   - notion
 ```
 
-### Example: Custom Zsh Plugins
+> ⚠️ **Note**: This approach doesn't persist across updates when you pull changes from the main repository.
 
+### 🍴 Persistent Customization (Fork & Modify)
+
+**Recommended for long-term use**: Fork the repository and modify `default.config.yml` directly:
+
+1. **Fork the repository** on GitHub
+2. **Clone your fork**:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/macboot.git
+   cd macboot
+   ```
+3. **Edit `default.config.yml`** with your preferences:
+   ```bash
+   vim default.config.yml  # or use your preferred editor
+   ```
+4. **Commit your changes**:
+   ```bash
+   git add default.config.yml
+   git commit -m "Customize default configuration"
+   git push origin master
+   ```
+
+This approach ensures your customizations persist and can be version-controlled.
+
+### 🎨 Customization Examples
+
+#### Development Stack
 ```yaml
+# Add your language toolchains
+homebrew_installed_packages:
+  - go
+  - rust
+  - nodejs
+  - python@3.11
+  - terraform
+  - kubectl
+  - helm
+
+# Development applications
+homebrew_cask_apps:
+  - visual-studio-code
+  - jetbrains-toolbox
+  - docker
+  - postman
+  - tableplus
+```
+
+#### Design & Media
+```yaml
+# Creative tools
+homebrew_cask_apps_user:
+  - figma
+  - sketch
+  - adobe-creative-cloud
+  - vlc
+  - handbrake
+  - imageoptim
+```
+
+#### Shell Customization
+```yaml
+# Zsh plugins for your workflow
 oh_my_zsh_plugins:
   - git
   - docker
   - kubectl
   - terraform
+  - aws
   - zsh-syntax-highlighting
   - zsh-autosuggestions
+  - z
+
+# Custom theme (optional)
+oh_my_zsh_theme: "agnoster"  # Override powerlevel10k
 ```
+
+#### System Preferences
+```yaml
+# Night Shift configuration
+enable_night_shift: true
+night_shift_strength: 0.7  # 0.0 = minimal, 1.0 = maximum warmth
+
+# Add more system preferences as needed
+```
+
+### 🔄 Keeping Your Fork Updated
+
+To sync with upstream changes:
+
+```bash
+# Add upstream remote (one-time setup)
+git remote add upstream https://github.com/maximkir/macboot.git
+
+# Update your fork with latest changes
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push origin master
+```
+
+Then review and merge any conflicts with your customizations.
 
 ## 🏷️ Running Specific Tasks
 
